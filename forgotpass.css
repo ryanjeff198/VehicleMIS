@@ -1,0 +1,238 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+
+body {
+  position: relative;
+  margin: 0;
+  padding: 0;
+  background: url("kldbuilding.jpg") center/cover no-repeat;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.8);
+  z-index: -1;
+}
+
+.navbar{
+  width: 100%;
+  margin-bottom: 25%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #ffffff;
+  padding: 10px;
+}
+
+.navbar-left {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.logo{
+  cursor: pointer;
+  padding: 0;
+  width: 50px; /* Adjust size */
+  height: auto;
+}
+
+.brand-name {
+  font-size: 20px;
+  font-weight: bold;
+  color:#006400;
+  margin: 0;
+}
+
+.navbar ul li{
+  list-style: none;
+  display: inline-block;
+  margin: 0 20px;
+  position: relative;
+}
+.navbar ul li a{
+  text-decoration: none;
+  color: #000000;
+  font-weight: 300;
+  font-size: 15px;
+  border-radius: 5px;
+}
+
+.navbar ul li a:hover {
+  color: green;
+  background: white;
+  border-radius: 6px;
+  border: green;
+}
+
+.navbar ul li a.active {
+  background-color: #006400;
+  color: #006400;
+  font-weight: bold;
+  background: #ffff;
+  border: 2px solid #006400;
+  padding: 10px;
+  outline: none;
+}
+  
+.container{
+    position: relative;
+    height: 380px;
+    max-width: 350px;
+    width: 100%;
+    background-color: #ffff;
+    border-radius: 7px;
+    padding: 30px;
+    margin: 0 15px;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 1);
+    transform: translateY(-60%);
+    left: 35%;
+}
+
+  .container header{
+    position: relative;
+    font-size: 20px;
+    font-weight: 600;
+    color: #333;
+    bottom: 20px;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+  }
+
+  .input-field label{
+    font-size: 16px;
+    font-weight: 400;
+    display: flex;
+  }
+
+  .input-field input{
+    height: 40px;
+    margin: 8px 0;
+    padding: 0 50px;
+    outline: none;
+    border: 1px solid #000000;
+    border-radius: 5px;
+    font-size: 14px;
+    font-weight: 400;
+    color: #333;
+    background: transparent;
+  }
+
+  .input-field i{
+    font-size: 500%;
+    font-weight: 600;
+    margin-left: 30%;
+    color: rgb(72, 236, 72);
+    padding: 5px;
+  }
+
+  .form-first, .form-second {
+    opacity: 0;
+    visibility: hidden;
+    position: absolute;
+    width: 100%;
+    transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
+    z-index: 0;
+}
+
+.form-first.active, .form-second.active {
+    opacity: 1;
+    visibility: visible;
+    z-index: 1;
+}
+
+
+button[value="btn"] {
+  height: 40px;
+  width: 80%;
+  background-color: #1f9335;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  font-weight: 500;
+  color: white;
+  cursor: pointer;
+  transition: background-color 0.3s ease-in-out, transform 0.2s ease-in-out;
+  margin-top: 20px;
+}
+
+/* Hover effect */
+button[value="btn"]:hover {
+  background: white;
+  color: green;
+  border: 1px solid #1f9335;
+}
+
+/* Active effect (when clicked) */
+button[value="btn"]:active {
+  transform: scale(0.95);
+}
+
+
+.option-buttons {
+  display: flex;
+  gap: 10px;  /* Space between buttons */
+  padding: 0;
+}
+
+.option-buttons li {
+  list-style: none;
+  flex: 1; /* Makes both buttons equal width */
+}
+
+.option-buttons li button {
+  height: 40px;
+  width: 90%;
+  background-color: none;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  font-weight: 500;
+  color: rgb(0, 0, 0);
+  cursor: pointer;
+  transition: background-color 0.3s ease-in-out;
+}
+
+.option-buttons li button:hover {
+  background-color: #087135;
+}
+
+.option-buttons li button:active {
+  background-color: rgb(71, 122, 71);
+  transform: scale(0.95);
+  color: #fff;
+}
+
+.footer {
+  width: 100%;
+  background-color: white; 
+  color: black; 
+  text-align: center;
+  padding: 10px;
+  margin-top: -10%;
+}
+
+.footer p {
+  margin: 0; 
+  display: inline-flex; 
+  align-items: center; 
+}
+
+.footer-logo {
+  max-width: 20px; 
+  height: auto; 
+  margin: 0 5px; 
+}

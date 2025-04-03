@@ -1,0 +1,205 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Montserrat", sans-serif;
+}
+
+body {
+    position: relative;
+    margin: 0;
+    padding: 0;
+    background: url("kldbuilding.jpg") center/cover no-repeat;
+}
+  
+body::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    z-index: -1;
+  }
+
+.navbar{
+    width: 100%;
+    margin-bottom: 5%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: #ffffff;
+    padding: 10px;
+}
+
+.navbar-left {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.logo{
+    cursor: pointer;
+    padding: 10px;
+    width: 50px; /* Adjust size */
+    height: auto;
+}
+
+.brand-name {
+    font-size: 20px;
+    font-weight: bold;
+    color:#006400;
+    margin: 0;
+}
+
+.navbar ul li{
+    list-style: none;
+    display: inline-block;
+    margin: 0 20px;
+    position: relative;
+}
+.navbar ul li a{
+    text-decoration: none;
+    color: #000000;
+    font-weight: 300;
+    font-size: 15px;
+    border-radius: 5px;
+}
+
+.navbar ul li a:hover {
+    color: green;
+    background: white;
+    border-radius: 6px;
+    border: green;
+}
+
+.navbar ul li a.active {
+    background-color: #006400;
+    color: #006400;
+    font-weight: bold;
+    background: #ffff;
+    border: 2px solid #006400;
+    padding: 10px;
+    outline: none;
+}
+
+.back a{
+    color: white;
+    font-size: 24px;
+    font-weight: bold;
+    text-transform: uppercase;
+    text-decoration: none;
+    padding: 10px 20px;
+    border-radius: 8px;
+    display: inline-block;
+    transition: 0.3s ease-in-out;
+}
+
+.back a:hover {
+    text-decoration: underline;
+}
+
+
+/* Slider Wrapper */
+.slider-wrapper {
+    overflow: hidden;
+    max-width: 1200px;
+    margin: 0 70px 55px;
+}
+
+.card-list .card-item {
+    height: auto;
+    color: black;
+    user-select: none;
+    padding: 35px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+    backdrop-filter: blur(30px);
+    background: #fff;
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    transition: 0.3s ease;
+}
+
+.card-list .card-item:hover {
+    transform: scale(1.05);
+}
+
+.card-list .card-item .user-image {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    margin-bottom: 40px;
+    border: 3px solid #1B4D3E;
+    padding: 4px;
+}
+
+.card-list .card-item .user-profession {
+    font-size: 1.15rem;
+    color: black;
+    font-weight: 500;
+    margin: 14px 0 40px;
+}
+
+.card-list .card-item .user-description {
+    font-size: 1rem;
+    color: #333;
+    margin-bottom: 25px;
+    text-align: center;
+    font-weight: 400;
+}
+
+.card-list .card-item .message-button {
+    font-size: 1.25rem;
+    padding: 10px 35px;
+    color:#fff;
+    border-radius: 6px;
+    font-weight: 500;
+    cursor: pointer;
+    background:#1B4D3E;
+    border: 1px solid transparent;
+    transition: 0.2s ease;
+}
+
+.card-list .card-item .message-button:hover {
+    background:#fff;
+    border: 1px solid #fff;
+    color: #1B4D3E;
+}
+
+/* Swiper Pagination */
+.slider-wrapper .swiper-pagination-bullet {
+    background: #fff;
+    height: 13px;
+    width: 13px;
+    opacity: 0.5;
+}
+
+.slider-wrapper .swiper-pagination-bullet-active {
+    opacity: 1;
+}
+
+/* Swiper Navigation Buttons */
+.slider-wrapper .swiper-slide-button {
+    color: #fff;
+    margin-top: -55px;
+    transition: 0.2s ease;
+}
+
+.slider-wrapper .swiper-slide-button:hover {
+    color: #4658ff;
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+    .slider-wrapper {
+        margin: 0 10px 40px;
+    }
+
+    .slider-wrapper .swiper-slide-button {
+        display: none;
+    }
+}
