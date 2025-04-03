@@ -1,0 +1,265 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+*{
+    box-sizing: border-box;
+}
+
+*::before,
+*::after{
+    box-sizing: border-box;
+}
+
+body {
+    position: relative;
+    margin: 0;
+    padding: 0;
+    background: url("kldbuilding.jpg") center/cover no-repeat;
+  }
+  
+  body::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    z-index: -1;
+  }
+
+  .navbar{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: #ffff;
+    padding: 10px;
+}
+
+.navbar-left {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.logo{
+    cursor: pointer;
+    padding: 0;
+    width: 50px; /* Adjust size */
+}
+
+.brand-name {
+    font-size: 20px;
+    font-weight: bold;
+    color:#006400;
+    margin: 0;
+}
+
+.navbar ul li{
+    list-style: none;
+    display: inline-block;
+    margin: 0 20px;
+    position: relative;
+}
+.navbar ul li a{
+    text-decoration: none;
+    color: #000000;
+    font-weight: 300;
+    font-size: 15px;
+    border-radius: 5px;
+}
+
+.navbar ul li a:hover {
+    color: green;
+    background: white;
+    border-radius: 6px;
+    border: green;
+}
+
+.navbar ul li a.active {
+    background-color: #006400;
+    color: #006400;
+    font-weight: bold;
+    background: #ffff;
+    border: 2px solid #006400;
+    padding: 10px;
+    outline: none;
+}
+
+.container {
+    margin: 0 auto; /* Centers horizontally */
+    padding: 4rem;
+    width: 40rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centers the content */
+    justify-content: center; /* Centers vertically */
+    min-height: 100vh; /* Ensures full height */
+    text-align: center;
+}
+
+
+.accordion .accordion-items{
+    border-bottom: 1px solid #bdbbbb;
+}
+
+.accordion .accordion-items button[aria-expanded ='true']{
+    border-bottom: 1px solid #3a3939;
+}
+
+.accordion button{
+    position: relative;
+    display: block;
+    text-align: left;
+    width: 100%;
+    padding: 1em 0;
+    color: #02c450;
+    font-weight: 400;
+    font-size: 15px;
+    background: none;
+    outline: none;
+    border: none;
+}
+
+.accordion button:hover,
+.accordion button:focus{
+    cursor: pointer;
+    color: #23643d;
+    background: #ffffff;
+    border: 1px solid #23643d;
+    border-radius: 5px;
+}
+
+.accordion button:hover::after,
+.accordion button:focus::after{
+    cursor: pointer;
+    color: #23643d;
+}
+
+.accordion button .accordion-title{
+    padding: 16px 24px 16px 0px;
+}
+
+.accordion button .icon{
+    display: inline-block;
+    position: absolute;
+    top: 18px;
+    width: 22px;
+    border-radius: 22px;
+    height: 22px;
+    border-radius: 22px;
+    border: 1px solid;
+    right: 0;
+}
+
+.accordion button .icon::before{
+    display: block;
+    position: absolute;
+    content: '';
+    top: 9px;
+    left: 5px;
+    width: 10px;
+    height: 2px;
+    background: currentColor;
+}
+
+.accordion button .icon::after{
+    display: block;
+    position: absolute;
+    content: '';
+    top: 5px;
+    left: 9px;
+    width: 2px;
+    height: 10px;
+    background: currentColor;
+}
+
+.accordion button[aria-expanded='true']{
+    color: #1f9335;
+}
+
+.accordion button[aria-expanded='true'] .icon::after{
+    width: 0;
+}
+
+.accordion button[aria-expanded='true'] + .accordion-content{
+    opacity: 1;
+    max-height: 9em;
+    transition: all 200ms linear;
+    will-change: opacity, max-height;
+}
+
+.accordion .accordion-content{
+    opacity: 0;
+    max-height: 0;
+    overflow: hidden;
+    transition: opacity 200ms linear, max-height 200ms linear;
+    will-change: opacity, max-height;
+}
+
+.accordion .accordion-content p{
+    font-size: 17px;
+    font-weight: 500;
+    margin: 1em 0;
+    color: rgb(224, 223, 223);
+    font: bolder;
+}
+
+.faq-container {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 5rem;
+    flex-wrap: wrap;
+    max-width: 90%;
+    margin: auto;
+}
+
+a{
+    color: #ffffff;
+    margin: 20px;
+}
+
+h1{
+    color: #ffffff;
+}
+
+.faq-group {
+    flex: 1;
+    min-width: 300px;
+}
+
+.faq-group h2 {
+    text-align: center;
+    color: #02c450;
+    font-weight: 600;
+}
+
+.footer {
+    bottom: 0;
+    width: 100%;
+    background-color: white; 
+    color: black; 
+    text-align: center;
+    padding: 5px;
+    margin-top: 20%;
+  }
+  
+  .footer p {
+    margin: 0; 
+    display: inline-flex; 
+    align-items: center; 
+  }
+  
+  .footer-logo {
+    max-width: 20px; 
+    height: auto; 
+    margin: 0 5px; 
+  }
+
+@media (max-width: 768px) {
+    .faq-container {
+        flex-direction: column;
+        align-items: center;
+    }
+}

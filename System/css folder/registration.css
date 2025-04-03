@@ -1,0 +1,453 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+body {
+  position: relative;
+  margin: 0;
+  padding: 0;
+  background: url("kldbuilding.jpg") center/cover no-repeat;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.8);
+  z-index: -1;
+}
+
+.navbar{
+  width: 100%;
+  margin-bottom: 10%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #ffffff;
+  padding: 10px;
+}
+
+.navbar-left {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.logo{
+  cursor: pointer;
+  padding: 0;
+  width: 50px; /* Adjust size */
+}
+
+.brand-name {
+  font-size: 20px;
+  font-weight: bold;
+  color:#006400;
+  margin: 0;
+}
+
+.navbar ul li{
+  list-style: none;
+  display: inline-block;
+  margin: 0 20px;
+  position: relative;
+}
+.navbar ul li a{
+  text-decoration: none;
+  color: #000000;
+  font-weight: 300;
+  font-size: 14px;
+  border-radius: 5px;
+}
+
+.navbar ul li a:hover {
+  color: green;
+  background: white;
+  border-radius: 6px;
+  border: green;
+}
+
+.navbar ul li a.active {
+  background-color: #006400;
+  color: #006400;
+  font-weight: bold;
+  background: #ffff;
+  border: 2px solid #006400;
+  padding: 10px;
+  outline: none;
+}
+
+.container{
+  position: relative;
+  max-width: 700px;
+  width: 100%;
+  background-color: #ffffff;
+  border-radius: 7px;
+  padding: 30px;
+  margin: 0 15px;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 1);
+  left: 50%;
+  transform: translate(-50%, -10%);
+}
+
+.container header{
+  position: relative;
+  font-size: 20px;
+  font-weight: 600;
+  color: #333;
+}
+.container header::before{
+  content: "";
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  height: 3px;
+  width: 27px;
+  border-radius: 8px;
+  background-color: green;
+}
+
+.container form{
+  position: relative;
+  min-height: 570px;
+  background-color: #f2f2f2;
+  overflow: hidden;
+}
+
+.container form .form{
+  position: absolute;
+  background-color: #ffff;
+  transition: 0.3s ease;
+}
+
+.container form .form.second{
+  opacity: 0;
+  pointer-events: none;
+  transform: translateX(100%);
+}
+
+form.secActive .form.first{
+  opacity: 0;
+  pointer-events: none;
+  transform: translateX(-100%);
+  min-height: 400px;
+}
+
+form.secActive .form.second{
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateX(0%);
+}
+
+.container form .title{
+  display: block;
+  margin-bottom: 8px;
+  font-size: 16px;
+  font-weight: 500;
+  margin: 6px 0;
+  color: #333;
+}
+
+.container form .fields{
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+}
+
+form .fields .input-field{
+  display: flex;
+  flex-direction: column;
+  width: calc(100%/3 - 15px);
+  margin: 4px 0;
+}
+
+.input-field label{
+  font-size: 15px;
+  font-weight: 500;
+  color: #000000;
+}
+
+.input-field input{
+  height: 40px;
+  margin: 8px 0;
+  padding: 0 15px;
+  outline: none;
+  border: 1px solid #535353;
+  border-radius: 5px;
+  font-size: 14px;
+  font-weight: 400;
+  color: #333;
+}
+
+
+.input-field input:is(:focus, :valid){
+  box-shadow: 0 3px 6px rgb(126, 124, 124);
+}
+
+.input-field input[type="date"]{
+  color: #707070;
+}
+
+.input-field input[type="date"]:valid{
+  color: #333;
+}
+
+.container form button, .backBtn{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 45px;
+  max-width: 200px;
+  width: 100%;
+  background-color: #1f9335;
+  border: none;
+  outline: none;
+  color: #ffff;
+  border-radius: 5px;
+  margin: 20px 0;
+  cursor: pointer;
+  transition: all 0.3s linear;
+}
+
+.container form button,
+.container form .backBtn{
+  font-size: 14px;
+  font-weight: 400;
+}
+
+form button:hover{
+  background-color: white;
+  color: #23643d;
+  border: 2px solid #1f9335;
+}
+
+.container form .backBtn:hover{
+  background-color: white;
+  color: #23643d;
+  border: 2px solid #1f9335;
+}
+
+form button i{
+  margin: 0 6px;
+}
+
+form button i,
+form .backBtn i{
+ margin: 0 6px;
+}
+
+form .buttons{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+form.buttons button, .backBtn{
+  margin-right: 14px;
+}
+
+/* Chrome, Safari, Edge, Opera */
+input[type=number]::-webkit-outer-spin-button,
+input[type=number]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.form-select{
+  height: 38px;
+  margin: 5px 0;
+  padding: 0 20px;
+  outline: none;
+  border: 1px solid #535353;
+  border-radius: 5px;
+  font-size: 14px;
+  font-weight: 400;
+  color: #333;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 1);
+  margin-top: 4%;
+  margin-right: 50px;
+}
+
+
+/* Styling the file input */
+.input-field input[type="file"] {
+  display: none; /* Hide default file input */
+}
+
+/* Custom file upload button */
+.input-field .custom-file-upload {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 45px;
+  color: rgb(0, 0, 0);
+  font-size: 14px;
+  font-weight: 500;
+  padding: 10px 15px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border: 1px solid #535353;
+  box-shadow: #333;
+}
+
+.container .form p,
+.container .form a{
+  font-size: 15px;
+}
+
+
+.password-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.password-wrapper input {
+  width: 100%;
+  padding-right: 40px; /* Space for eye icon */
+}
+
+.password-wrapper .toggle-password {
+  position: absolute;
+  right: 10px;
+  cursor: pointer;
+  font-size: 18px;
+  color: #555;
+}
+
+.password-wrapper .toggle-password:hover {
+  color: black;
+}
+
+.login-text {
+  font-size: 20px;
+  color: #555;
+  margin-left: 30%;
+}
+
+.login-text a {
+  color:  #0056b3;
+  text-decoration: none;
+  font-weight: bold;
+  transition: color 0.3s ease;
+}
+
+.login-text a:hover {
+  color: #007bff;
+  text-decoration: underline;
+}
+
+.footer {
+  bottom: 0;
+  width: 100%;
+  background-color: white; 
+  color: black; 
+  text-align: center;
+  padding: 5px;
+  margin-top: 20%;
+}
+
+.footer p {
+  margin: 0; 
+  display: inline-flex; 
+  align-items: center;
+  font-size: 13px; 
+}
+
+.footer-logo {
+  max-width: 20px; 
+  height: auto; 
+  margin: 0 5px; 
+}
+
+.nav-links {
+  display: flex;
+  list-style: none;
+}
+
+.menu-icon {
+  font-size: 30px;
+  cursor: pointer;
+  display: none; /* Hide by default */
+}
+
+/* Responsive for small screens */
+@media (max-width: 768px) {
+  .nav-links {
+    display: none;
+    flex-direction: column;
+    background: white;
+    position: absolute;
+    top: 60px;
+    right: 0;
+    width: 200px;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
+  }
+
+  .nav-links.active {
+    display: flex; /* Show when active */
+  }
+
+  .menu-icon {
+    display: block; /* Show burger button */
+  }
+}
+
+
+@media (max-width: 750px) {
+  .container form {
+    overflow-y: auto;
+    max-height: 80vh;
+  }
+  .container form::-webkit-scrollbar{
+    display: none;
+  }
+  form .fields .input-field{
+    width: calc(100%/ 2 - 15px);
+  }
+  form .fields .input-field {
+    width: calc(100% / 2 - 10px); /* Instead of 3 columns, now 2 */
+  }
+}
+
+@media (max-width: 600px) {
+  .navbar {
+    flex-direction: column;
+    padding: 10px;
+  }
+
+  .navbar ul {
+    padding: 10px 0;
+  }
+
+  .navbar ul li {
+    display: block;
+    margin: 10px 0;
+  }
+}
+  
+@media (max-width: 550px) {
+  .container form {
+    -webkit-overflow-scrolling: touch;
+  }
+  form .fields .input-field {
+    width: 100%;
+  }
+  .form-select{
+    margin-right: 100%;
+  }
+  form .fields .input-field {
+    width: 100%; /* Full width on small screens */
+  }
+}
+
