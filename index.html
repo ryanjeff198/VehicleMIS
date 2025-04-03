@@ -1,290 +1,107 @@
+<!DOCTYPE html>
 <html>
     <head>
         <title>KLD Vehicle System</title>
-        <style>
-
-            *{
-    margin: 0;
-    padding: 0;
-    font-family: sans-serif;
-}
-
-body {
-    position: relative;
-    margin: 0;
-    padding: 0;
-    background: url("kldbuilding.jpg") center/cover no-repeat;
-}
-  
-body::before {
-    content: "";
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.8);
-    z-index: -1;
-  }
-
-.navbar{
-    width: 100%;
-    margin-bottom: 60%;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    background: #ffffff;
-    padding: 10px;
-}
-
-.navbar-left {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-}
-
-.logo{
-    cursor: pointer;
-    padding: 0;
-    width: 50px; /* Adjust size */
-    height: auto;
-}
-
-.brand-name {
-    font-size: 20px;
-    font-weight: bold;
-    color:#006400;
-    margin: 0;
-}
-
-.navbar ul li{
-    list-style: none;
-    display: inline-block;
-    margin: 0 20px;
-    position: relative;
-}
-.navbar ul li a{
-    text-decoration: none;
-    color: #000000;
-    font-weight: 300;
-    font-size: 15px;
-    border-radius: 5px;
-}
-
-.navbar ul li a:hover {
-    color: green;
-    background: white;
-    border-radius: 6px;
-    border: green;
-}
-
-.navbar ul li a.active {
-    background-color: #006400;
-    color: #006400;
-    font-weight: bold;
-    background: #ffff;
-    border: 2px solid #006400;
-    padding: 10px;
-    outline: none;
-}
-
-.content{
-    position:absolute;
-    width:100%;
-    top:50%;
-    transform: translateY(-50%);
-    text-align:center;
-    color:#fff;
-}
-.content h1{
-    font-size:70px;
-    margin-top:-10%;
-}
-.content p{
-    margin:20px auto;
-    font-weight:100;
-    line-height:25px;
-}
-.button-link {
-    width: 200px;
-    padding: 15px 0;
-    text-align: center;
-    margin: 20px 10px;
-    border-radius: 25px;
-    font-weight: bold;
-    border: 2px solid green;
-    background: transparent;
-    color: #fff;
-    cursor: pointer;
-    position: relative;
-    overflow: hidden;
-    display: inline-block; /* Ensure it's styled like a button */
-    text-decoration: none; /* Remove underline from links */
-    transition: transform 0.3s ease, background-color 0.3s ease;
-}
-
-.button-link span {
-    background: green;
-    height: 100%;
-    width: 0%;
-    border-radius: 25px;
-    position: absolute;
-    left: 0;
-    bottom: 0;
-    z-index: -1;
-    transition: width 0.5s;
-}
-
-.button-link:hover span {
-    width: 100%;
-}
-
-.button-link:hover {
-    border: none;
-}
-
-/* Full viewport flexbox to center content */
-.contact-form-container {
-    display: flex;
-    justify-content: center; /* Centers content horizontally */
-    align-items: center; /* Centers content vertically */
-    height: 70vh; /* Ensure the container takes the full viewport height */
-    margin: 0; /* Remove any default margin from the body */
-}
-
-/* Contact Form Styling */
-.contact-form {
-    max-width: 600px;
-    padding: 15px;
-    border: 2px solid #333;
-    border-radius: 8px;
-    background-color: #f9f9f9;
-    width: 100%;
-    box-sizing: border-box; /* Ensures padding is included in width calculation */
-}
-
-.contact-form h2 {
-    text-align: center;
-    margin-bottom: 20px;
-}
-
-.contact-form label {
-    display: block;
-    margin-bottom: 2x;
-    font-weight: bold;
-}
-
-.contact-form input{
-    width: 100%;
-    padding: 10px;
-    margin: 10px 0 20px 0;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    font-size: 16px;
-}
-
-.contact-form textarea{
-    width: 100%;  /* Match the width of input fields */
-    min-height: 100px;  /* Give enough height */
-    resize: vertical;  /* Allow resizing but only vertically */
-    overflow-y: auto;  /* Enable scrolling if needed */
-    box-sizing: border-box;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    font-size: 16px;
-    margin: 10px 0 20px 0;
-}
-
-.contact-form button {
-    width: 100%;
-    padding: 12px;
-    background-color: #006400;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    font-size: 18px;
-    cursor: pointer;
-}
-
-.contact-form button:hover {
-    background: #ffffff;
-    color: #006400;
-    border: 2px solid #006400;
-}
-
-/* Animation for the "Contact Us" button when clicked */
-.button-link:active {
-    transform: scale(0.95); 
-    background-color: #006400;
-    animation: clickEffect 0.5s forwards;
-}
-
-@keyframes clickEffect {
-    0% {
-        transform: scale(1);
-    }
-    50% {
-        transform: scale(0.9);
-    }
-    100% {
-        transform: scale(1);
-    }
-}
-
-.footer {
-    bottom: 0;
-    width: 100%;
-    background-color: white; 
-    color: black; 
-    text-align: center;
-    padding: 5px;
-    margin-top: 30%;
-}
-
-.footer p {
-    margin: 0; 
-    display: inline-flex; 
-    align-items: center; 
-}
-
-.footer-logo {
-    max-width: 20px; 
-    height: auto; 
-    margin: 0 5px; 
-}
-        </style>
+        <link rel="stylesheet" href="style.css">
     </head>
     <body>
-
-     <div class="navbar">
-        <div class="navbar-left">
-          <img src="kldlogo.png" class="logo" alt="Logo">
-          <h1 class="brand-name">KLD</h1>
-        </div>
-        <ul>
-            <li><a href="#" class="active">Home</a></li>
-            <li><a href="aboutusbusiness.html">About Us</a></li>
-            <li><a href="login.html">Log in</a></li>
-            <li><a href="registration.html">Create an Account</a></li>
-            <li><a href="contactus.html">Contact Us</a></li>
-        </ul>
-     </div>
-
-            <div class="content">
-                <h1>Welcome to KLD Vehicle Website</h1>
-                <p>Your Vehicle, Our Priority.</p>
-                <div>
-                    <a href="faq.html" class="button-link"><span></span>FAQ's</a>
-                    <a href="contactus.html" class="button-link"><span></span>CONTACT US</a>
+        <div class="banner">
+            <div class="navbar">
+                <div class="navbar-left">
+                    <img src="kldlogo-Photoroom.png" class="logo" alt="KLD Vehicle Logo">
+                    <h3 class="brand-name">KLD</h3>
+                </div>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="contactus.html">Contact Us</a></li>
+                    <li><a href="registration.html">Create an Account</a></li>
+                </ul>
+            </div>
+            <!-- Carousel Section -->
+            <div class="carousel-container">
+                <div class="carousel">
+                    <div class="carousel-slide active">
+                        <img src="kld buildingg.jpg" alt="KLD Building">
+                    </div>
+                    <div class="carousel-slide">
+                        <img src="kld buildingg.jpg" alt="KLD Building 2">
+                    </div>
+                    <div class="carousel-slide">
+                        <img src="kld buildingg.jpg" alt="KLD Building 3">
+                    </div>
+                    <div class="carousel-slide">
+                        <img src="kld buildingg.jpg" alt="KLD Building 4">
+                    </div>
+                </div>
+        
+                <!-- Navigation Arrows -->
+                <button class="carousel-button prev" aria-label="Previous slide">&#10094;</button>
+                <button class="carousel-button next" aria-label="Next slide">&#10095;</button>
+        
+                <!-- Pagination Dots -->
+                <div class="pagination-dots">
+                    <span class="dot active" data-index="0"></span>
+                    <span class="dot" data-index="1"></span>
+                    <span class="dot" data-index="2"></span>
+                    <span class="dot" data-index="3"></span>
                 </div>
             </div>
-              
-        </div>
+            <div class="about-us">
+                <hr>
+                <h2>KLD Vehicle Registration System</h2>
+                <p>The Objective of this project is to design, develop, and implement an efficient and automated Vehicle Parking and Penalty Transaction for Kolehiyo ng Lungsod ng Dasmarinas, aiming to improve parking management, reduce congestion, and enhance overall campus experience.</p>
     
-        <footer class="footer">
-            <p><span class="logo-text"></span> <img src="kldlogo-Photoroom.png" alt="KLD Vehicle System Logo" class="footer-logo"> <span class="logo-text">@ 2025 KLD Vehicle System. All Rights Reserved.</span></p>
+                <!-- Mission & Vision Section -->
+                <div class="mission-vision">
+                    <div class="mission-vision-box">
+                        <h3>🎯 Our Mission</h3>
+                        <p>Our Mission is to provide a seamless and efficient vehicle registration system that enhances the safety, convenience, and organization of campus transportation. We aim to streamline the registration process, ensure secure access control, and maintain smooth traffic flow within the university.</p>
+                    </div>
+    
+                    <div class="mission-vision-box">
+                        <h3>🌟 Our Vision</h3>
+                        <p>Our Vision is to become a leading campus vehicle management system that promotes sustainability, improves student and staff mobility, and fosters a safer and more organized environment for everyone on campus.</p>
+                    </div>
+                </div>
+                <hr>
+                <!-- Advantages Section -->
+                 <div class="h2">
+                  <h2>FEATURES OF THE SYSTEM</h2>
+            </div>
+        <div class="advantages">
+            <div class="advantage-box">
+                <h3>Fast & Easy Registration</h3>
+                <p>Our registration process is simple, fast, and user-friendly, allowing you to get started in minutes.</p>
+            </div>
+            <div class="advantage-box">
+                <h3>Comprehensive Services</h3>
+                <p>We offer a variety of services including vehicle tracking, account management, and more, all at your fingertips.</p>
+            </div>
+            <div class="advantage-box">
+                <h3>Secure & Reliable</h3>
+                <p>Your information is stored securely with us. We use top-notch security measures to ensure your data is safe.</p>
+            </div>
+        </div>
+        <hr>
+        <a href=""><img src="" alt=""></a>
+          <footer class="footer">
+            <p>
+                <span class="logo-text"></span> 
+                <img src="kldlogo-Photoroom.png" alt="KLD Vehicle System Logo" class="footer-logo"> 
+                <span class="logo-text">© 2025 KLD Vehicle System. All Rights Reserved.</span>
+            </p>
+            <p>Contact us: 
+                <a href="mailto:kldvehiclesystem@gmail.com">kldvehiclesystem@gmail.com</a>
+            </p>
+            <p>Follow us: 
+                <a href="https://www.facebook.com/kldvehiclesystem" target="_blank">Facebook</a>
+                <a href="https://www.facebook.com/kldvehiclesystem" target="_blank">Google</a>
+            </p>
         </footer>
+        <hr>
+
         
         
-    </body>
-</html>
+            <script src="script.js"></script>
+        </body>
+        </html>
