@@ -1,36 +1,22 @@
-* {
+*{
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
-    font-family: "Montserrat", sans-serif;
+    font-family: sans-serif;
 }
-
-body {
-    position: relative;
-    margin: 0;
-    padding: 0;
-    background: url("kldbuilding.jpg") center/cover no-repeat;
-}
-  
-body::before {
-    content: "";
-    position: fixed;
-    top: 0;
-    left: 0;
+.banner{
     width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.8);
-    z-index: -1;
-  }
+    height: 100vh;
+    background-size: cover;
+    background-position: center;
 
+}
 .navbar{
     width: 100%;
-    margin-bottom: 5%;
+    margin-bottom: 10%;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    background: #ffffff;
-    padding: 10px;
+    background: #ffff;
 }
 
 .navbar-left {
@@ -83,24 +69,184 @@ body::before {
     padding: 10px;
     outline: none;
 }
+/* Carousel Container */
+.carousel-container {
+    position: relative;
+    max-width: 100%;
+    overflow: hidden;
+    top: -20%;
+}
 
-.back a{
+/* Carousel */
+.carousel {
+    display: flex;
+    transition: transform 0.8s ease-in-out;
+    width: 400%;
+}
+
+/* Individual Slides */
+.carousel-slide {
+    flex: 0 0 100%;
+}
+
+.carousel-slide img {
+    width: 25%;
+    height: 600px; /* Adjust height as needed */
+    object-fit: cover;
+}
+
+/* Navigation Arrows */
+.carousel-button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.5);
     color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
     font-size: 24px;
-    font-weight: bold;
-    text-transform: uppercase;
-    text-decoration: none;
-    padding: 10px 20px;
-    border-radius: 8px;
+    z-index: 10;
+}
+
+.carousel-button:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+.prev {
+    left: 5px;
+}
+
+.next {
+    right: 5px;
+}
+
+/* Pagination Dots */
+.pagination-dots {
+    text-align: center;
+    position: absolute;
+    bottom: 15px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.dot {
+    height: 12px;
+    width: 12px;
+    margin: 0 5px;
+    background-color: #bbb;
+    border-radius: 50%;
     display: inline-block;
-    transition: 0.3s ease-in-out;
+    cursor: pointer;
 }
 
-.back a:hover {
-    text-decoration: underline;
+.dot.active {
+    background-color: #333;
+}
+/* About us */ 
+.about-us {
+    text-align: center;
+    padding: 20px 40px;
+    max-width: 2000px;
+    background: #ffffff; 
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1); 
+    color: #333;
+}
+
+.about-us h2 {
+    font-size: 36px;
+    margin-bottom: 20px;
+    color: #006400; 
+}
+.about-us h1{
+    font-size: 50px;
+    margin-bottom: 30px;
+    color: #006400;
+}
+
+.about-us p {
+    font-size: 18px;
+    line-height: 1.6;
+    color: #333;
 }
 
 
+/* Mission & Vision Section */
+.mission-vision {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    padding: 20px;
+    flex-wrap: wrap; 
+}
+
+.mission-vision-box {
+    background-color: #f8f9fa;
+    border: 2px solid #ddd; 
+    border-radius: 10px;
+    padding: 20px;
+    width: 400px; 
+    text-align: center;
+    box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.1); 
+    transition: transform 0.3s ease-in-out;
+}
+
+.mission-vision-box:hover {
+    transform: scale(1.05); 
+}
+
+.mission-vision h3 {
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.mission-vision p {
+    color: #555;
+    font-size: 16px;
+    line-height: 1.5;
+}
+
+
+
+/* FEATURES SECTIONS */ 
+
+.advantages {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+
+.advantage-box {
+    background: rgba(0, 100, 0, 0.1);
+    padding: 30px;
+    border-radius: 8px;
+    width: 25%;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    transition: transform 0.3s;
+    cursor: default;
+}
+
+.advantage-box:hover {
+    transform: scale(1.05);
+}
+
+.advantage-box h3 {
+    color: #006400;
+    font-size: 22px;
+}
+
+.advantage-box p {
+    font-size: 16px;
+    color: #333;
+    line-height: 1.5;
+}
+.parking {
+text-align: center;
+margin: 50px 0;
+}
 /* Slider Wrapper */
 .slider-wrapper {
     overflow: hidden;
@@ -152,54 +298,62 @@ body::before {
     font-weight: 400;
 }
 
-.card-list .card-item .message-button {
-    font-size: 1.25rem;
-    padding: 10px 35px;
-    color:#fff;
-    border-radius: 6px;
-    font-weight: 500;
-    cursor: pointer;
-    background:#1B4D3E;
-    border: 1px solid transparent;
-    transition: 0.2s ease;
-}
-
-.card-list .card-item .message-button:hover {
-    background:#fff;
-    border: 1px solid #fff;
-    color: #1B4D3E;
-}
-
-/* Swiper Pagination */
-.slider-wrapper .swiper-pagination-bullet {
-    background: #fff;
-    height: 13px;
-    width: 13px;
-    opacity: 0.5;
-}
-
-.slider-wrapper .swiper-pagination-bullet-active {
-    opacity: 1;
-}
-
-/* Swiper Navigation Buttons */
-.slider-wrapper .swiper-slide-button {
-    color: #fff;
-    margin-top: -55px;
-    transition: 0.2s ease;
-}
-
-.slider-wrapper .swiper-slide-button:hover {
-    color: #4658ff;
-}
-
-/* Mobile Responsiveness */
-@media (max-width: 768px) {
-    .slider-wrapper {
-        margin: 0 10px 40px;
+    /* Swiper Pagination */
+    .slider-wrapper .swiper-pagination-bullet {
+        background: #fff;
+        height: 13px;
+        width: 13px;
+        opacity: 0.5;
     }
 
+    .slider-wrapper .swiper-pagination-bullet-active {
+        opacity: 1;
+    }
+
+    /* Swiper Navigation Buttons */
     .slider-wrapper .swiper-slide-button {
-        display: none;
+        color: #fff;
+        margin-top: -55px;
+        transition: 0.2s ease;
     }
-}
+
+    .slider-wrapper .swiper-slide-button:hover {
+        color: #4658ff;
+    }
+
+    /* Mobile Responsiveness */
+    @media (max-width: 768px) {
+        .slider-wrapper {
+            margin: 0 10px 40px;
+        }
+
+        .slider-wrapper .swiper-slide-button {
+            display: none;
+        }
+    }
+    .footer {
+        background-color:#ffffff;
+        color: #fff; /* White text */
+        text-align: center;
+        padding: 20px;
+        font-family: Arial, sans-serif;
+    }
+    
+    .footer-logo {
+        width: 50px; /* Adjust logo size */
+        height: auto;
+        vertical-align: middle;
+        margin: 0 10px;
+    }
+    
+    .footer a {
+        color: #4da6ff; /* Light blue for links */
+        text-decoration: none;
+        margin: 0 5px;
+        font-weight: bold;
+    }
+    
+    .footer a:hover {
+        text-decoration: underline;
+    }
+    
