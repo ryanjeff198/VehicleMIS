@@ -11,24 +11,27 @@
 </head>
 <body>
 
-    <div class="navbar">
-        <div class="navbar-left">
-          <img src="../img folder/kldlogo.png" class="logo" alt="Logo">
-          <h1 class="brand-name">KLD</h1>
-        </div>
-        <ul>
-            <li><a href="index.html">Home</a></li>
-            <li><a href="aboutusbusiness.html">About Us</a></li>
-            <li><a href="contactus.html">Contact Us</a></li>
-            <li><a href="#" class="active">Log in</a></li>
+    <nav>
+        <ul class="sidebar">
+            <li onclick="hideSidebar()"><a href="#"><i class='bx bx-x' style="font-size: 40px;"></i></a></li>
+            <li><a href="#">Home</a></li>
+            <li><a href="#">Contact us</a></li>
+            <li><a href="#">Login/Signup</a></li>
         </ul>
-        <div class="hamburger">
-            <i class="fas fa-bars"></i>
-        </div>
-    </div>
-
+        <ul>
+            <li class="brand"><a href="#"><img src="../img folder/kldlogo.png" alt="kld logo"> KLD</a></li>
+            <li class="hideOnMobile"><a href="#">Home</a></li>
+            <li class="hideOnMobile"><a href="#">Contact us</a></li>
+            <li class="hideOnMobile"><a href="#">Login</a></li>
+            <li class="menu-button" onclick="showSidebar()"><a href="#"><i class='bx bx-menu' style="font-size: 30px;"></i></a></li>
+        </ul>
+    </nav>
+<br>
+<br>
+<!--THIS IS LOGIN-->
+<center>
     <div class="wrapper" id="loginForm">
-        <form action="userdashboard.html" method="post">
+        <form action="../html folder/userdashboard.html" method="post">
             <img src="../img folder/kldlogo.png" alt="kld logo">
             <hr color="green">
             <br>
@@ -56,8 +59,9 @@
         </form>
     </div>
 
+<!--THIS IS REGISTRATION FORM-->
     <div class="wrapper hide" id="registerForm">
-        <form action="userdashboard.html" method="post">
+        <form action="../html folder/userdashboard.html" method="post">
             <img src="../img folder/kldlogo.png" alt="kld logo">
             <hr color="green">
             <br>
@@ -98,13 +102,37 @@
 
         </form>
     </div>
+</center>
+<br>
+<br>
 
-    <footer class="footer">
-        <p><span class="logo-text"></span> 
-            <img src="../img folder/kldlogo.png" alt="KLD Vehicle System Logo" class="footer-logo"> 
-                <span class="logo-text">@ 2025 KLD Vehicle System. All Rights Reserved.</span></p>
-    </footer>
+    <a class="gotopbtn" href="#"><i class='bx bxs-chevrons-up'></i></a>
+            
+            <hr>
+            <footer class="footer">
+                <div class="footer-content">
+                <div class="footer-logo-section">
+                    <img src="../img folder/kldlogo.png" alt="KLD Vehicle System Logo" class="footer-logo">
+                    <span class="footer-brand">KLD Vehicle System</span>
+                </div>
+            
+                <div class="footer-links">
+                    <p>Contact us:<br>
+                    <a href="mailto:kldvehiclesystem@gmail.com">kldvehiclesystem@gmail.com</a>
+                    </p>
+                    <p>Follow us:<br>
+                    <a href="https://www.facebook.com/kldvehiclesystem" target="_blank">Facebook</a> 
+                    <a href="https://www.facebook.com/kldvehiclesystem" target="_blank">Google</a>
+                    </p>
+                </div>
+                </div>
+            
+                <div class="footer-bottom">
+                <p>© 2025 KLD Vehicle System. All Rights Reserved.</p>
+                </div>
+            </footer>
 
+    <!--THIS IS SCRIPT-->
     <script>
         function togglePassword(passwordFieldId, toggleIconId) {
     const passwordInput = document.getElementById(passwordFieldId);
@@ -140,6 +168,17 @@
         navbarMenu.classList.toggle("active");
     });
 });
+
+//NAV BAR FUNCTION
+function showSidebar(){
+  const sidebar = document.querySelector('.sidebar')
+  sidebar.style.display = 'flex'
+}
+function hideSidebar(){
+  const sidebar = document.querySelector('.sidebar')
+  sidebar.style.display = 'none'
+}
+
     </script>
 </body>
 </html>
