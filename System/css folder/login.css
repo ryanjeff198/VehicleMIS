@@ -6,97 +6,126 @@
 }
 
 body {
-    position: relative;
-    margin: 0;
-    padding: 0;
-    background: url("../img\ folder/kldphoto.jpg") center/cover no-repeat;
-    height: 180vh;
-  }
-  
-  body::before {
-    content: "";
+    min-height: 100vh;
+    background-color: #ffffff;
+    align-items: center;
+    justify-content: center;
+}
+
+
+nav{
+    background-color: #ffffff;
+    box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.1);
+    padding: 10px;
+}
+
+nav ul{
+    width: 100%;
+    list-style: none;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+nav li img{
+    width: 50px;
+    height: 50px;
+    margin-right: 10px;
+}
+
+.brand{
+    font-size: 30px;
+    font-weight: 600;
+}
+
+nav li{
+    height: 40px;
+}
+
+nav a{
+    height: 100%;
+    padding: 0 30px 0 0;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    color: black;
+}
+
+nav a:hover{
+    background: none;
+    text-decoration: underline;
+    font-weight: 300;
+    color: #006400;
+}
+
+nav li:first-child{
+    margin-right: auto;
+
+}
+
+
+/*For navbar*/
+.sidebar{
     position: fixed;
     top: 0;
-    left: 0;
+    right: 0;
+    height: 100vh;
+    width: 250px;
+    z-index: 999;
+    background-color: #f4f4f4;
+    box-shadow: -10px 0 10px rgba(0, 0, 0, 0.1);
+    display: none;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+}
+
+.sidebar li{
     width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.8);
-    z-index: -1;
-  }
+    padding: 30px;
+    font-size: 30px;
+    font-weight: 600;
+}
 
-.navbar{
+.sidebar a{
     width: 100%;
-    margin-bottom: 60%;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    background: #ffff;
-    padding: 10px;
-    
+    transition: all 0.3s ease;
 }
 
-.navbar-left {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-}
-
-.logo{
-    cursor: pointer;
-    padding: 0;
-    width: 50px; /* Adjust size */
-    height: auto;
-}
-
-.brand-name {
-    font-size: 20px;
-    font-weight: bold;
-    color:#006400;
-    margin: 0;
-}
-
-.navbar ul li{
-    list-style: none;
-    display: inline-block;
-    margin: 0 20px;
-    position: relative;
-}
-.navbar ul li a{
-    text-decoration: none;
-    color: #000000;
-    font-weight: 300;
-    font-size: 15px;
-    border-radius: 5px;
-}
-
-.navbar ul li a:hover {
-    color: green;
-    background: white;
-    border-radius: 6px;
-    border: green;
-}
-
-.navbar ul li a.active {
-    background-color: #006400;
+.sidebar a:hover {
+    background-color: none;
     color: #006400;
-    font-weight: bold;
-    background: #ffff;
-    border: 2px solid #006400;
-    padding: 10px;
-    outline: none;
+    text-decoration: underline;
+}
+
+.menu-button{
+    display: none;
+}
+
+  @media (max-width: 768px) {
+    .hideOnMobile {
+      display: none;
+    }
+    .menu-button{
+        display: block;
+    }
+}
+
+@media (max-width: 400px) {
+    .sidebar {
+      width: 100%;
+    }
 }
 
 .wrapper{
     width: 460px;
-    background-color: #ffffff;
+    background-color: #f0f1f5;
     color:#000;
     border-radius: 12px;
     padding: 35px 40px;
-    position: absolute;
-    top: 45%;
-    left: 50%;
-    transform: translate(-50%, -50%);
     transition: opacity 0.2s ease-in-out;
+    margin-bottom: 40%;
+    
 }
 
 .wrapper h1{
@@ -119,7 +148,7 @@ body {
     position: relative;
 }
 .input-box input{
-    width: 90%;
+    width: 95%;
     height: 100%;
     border: none;
     outline: none;
@@ -168,6 +197,13 @@ body {
     color: #000000;
 }
 
+.toggle-password {
+    position: absolute;
+    top: 5%;
+    right: 60px; 
+    transform: translateY(-50%);
+    cursor: pointer;
+}
 
 .wrapper .remember-forgot{
     display: flex;
@@ -229,104 +265,179 @@ body {
 }
 
 .footer {
-    bottom: 0;
-    width: 100%;
-    background-color: white; 
-    color: black; 
-    text-align: center;
-    padding: 5px;
-    margin-top: 20%;
+    background-color: #f4f4f4;
+    font-family: 'Segoe UI', sans-serif;
+    color: #333;
+    box-shadow: 0 -1px 10px rgba(0, 0, 0, 0.05);
   }
   
-  .footer p {
-    margin: 0; 
-    display: inline-flex; 
-    align-items: center; 
+  .footer-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: flex-start;
+  }
+  
+  .footer-logo-section {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 20px;
   }
   
   .footer-logo {
-    max-width: 20px; 
-    height: auto; 
-    margin: 0 5px; 
+    width: 60px;
+    height: auto;
   }
-
-  .hamburger {
-    display: none;
-    font-size: 24px;
-    cursor: pointer;
-    background: none;
-    border: none;
-}
+  
+  .footer-brand {
+    font-size: 20px;
+    font-weight: bold;
+    color: #006400;
+  }
+  
+  .footer-links p {
+    margin-bottom: 15px;
+    font-size: 14px;
+    color: #444;
+  }
+  
+  .footer-links a {
+    color: #006400;
+    text-decoration: none;
+    font-weight: 500;
+  }
+  
+  .footer-links a:hover {
+    text-decoration: underline;
+  }
+  
+  .footer-bottom p{
+    text-align: center;
+    border-top: 1px solid #ddd;
+    margin-top: 30px;
+    font-size: 10px;
+    color: #666;
+  }
 
 .hide {
     display: none;
 }
 
+.gotopbtn {
+    position: fixed;
+    bottom: 40px;
+    right: 40px;
+    width: 50px;
+    height: 50px;
+    background: #006400;
+    color: #fff;
+    text-align: center;
+    line-height: 50px;
+    font-size: 20px;
+    border-radius: 50%;
+    opacity: 0;
+    animation-name: appear;
+    animation-timeline: scroll();
+  }
+
+  
+  
+  @keyframes appear {
+    0% {
+        opacity: 0;
+        display: none;
+    }
+
+    50% {
+        opacity: 0;
+        display: none;
+    }
+
+    100% {
+        opacity: 1;
+        display: block;
+    }
+}
+
 /* RESPONSIVE DESIGN */
-@media (max-width: 1024px) {
+@media (max-width: 780px) {
+    .wrapper {
+        width: 70%; /* Make form container flexible */
+        padding: 20px;
+    }
+
+    .input-box i{
+        position: absolute;
+        left: 15%;
+        top: 15px;
+        font-size: 18px;
+        color: #000000;
+    }
+
+    .input-box .toggle-password {
+        position: absolute;
+        right: 50px;
+        transform: translateY(-50%);
+        cursor: pointer;
+    }
+
+    .input-box input {
+        width: 85%; /* Adjust input width */
+    }
+}
+
+@media (max-width: 580px) {
     .wrapper {
         width: 60%; /* Make form container flexible */
         padding: 20px;
     }
 
+    .input-box i{
+        position: absolute;
+        left: 20%;
+        top: 15px;
+        font-size: 18px;
+        color: #000000;
+    }
+
+    .input-box .toggle-password {
+        position: absolute;
+        right: 90px;
+        transform: translateY(-50%);
+        cursor: pointer;
+    }
+
     .input-box input {
         width: 70%; /* Adjust input width */
     }
-
-    .toggle-password {
-        right: 40px; /* Adjust toggle position */
-    }
-
-    .navbar {
-        flex-direction: column; /* Stack navbar items */
-        text-align: center;
-    }
-
-    .navbar ul {
-        padding: 0;
-        width: 100%;
-    }
-
-    .navbar ul li {
-        display: block; /* Stack menu items */
-        margin: 10px 0;
-    }
 }
 
-@media (max-width: 768px) {
-    .hamburger {
-        display: block; /* Show menu icon */
+@media (max-width: 414px) {
+    .wrapper {
+        width: 100%; /* Make form container flexible */
+        padding: 30px;
+    }
+
+    .input-box i{
         position: absolute;
+        left: 15%;
         top: 15px;
-        right: 20px;
+        font-size: 18px;
+        color: #000000;
     }
 
-    .navbar ul {
-        display: none; /* Hide menu */
-        flex-direction: column;
-        width: 100%;
-        text-align: center;
-        background: white;
+    .input-box .toggle-password {
         position: absolute;
-        top: 50px;
-        left: 0;
-        box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
-    }
-
-    .navbar ul.active {
-        display: flex; 
-    }
-}
-
-@media (max-width: 480px) {
-    .wrapper h1 {
-        font-size: 24px; 
+        right: 30px;
+        transform: translateY(-50%);
+        cursor: pointer;
     }
 
     .input-box input {
-        width: 100%; 
-        margin-left: 0;
-        padding-left: 10px;
+        width: 90%; /* Adjust input width */
     }
     
 
