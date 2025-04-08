@@ -24,7 +24,7 @@
                         <img src="kldbuildingg.jpg" alt="KLD Building">
                     </div>
                     <div class="carousel-slide">
-                        <img src="kldbuilding.jpg" alt="KLD Building 2">
+                        <img src="kldbuildingg.jpg" alt="KLD Building 2">
                     </div>
                     <div class="carousel-slide">
                         <img src="kldbuilding.jpg" alt="KLD Building 3">
