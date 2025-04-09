@@ -1,7 +1,7 @@
 <?php
 include_once 'DBcon.php'; // path to your Database.php file
 
-$database = new Database();
+$database = new DBcon();
 $conn = $database->connect();
 
 if($conn){
