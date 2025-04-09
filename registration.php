@@ -36,27 +36,27 @@
 
             <div class="input-field">
               <label for="">Last Name</label>
-              <input type="text" placeholder="Enter your last name" required/>
+              <input type="text" name = "LastName" placeholder="Enter your last name" required/>
             </div>
 
             <div class="input-field">
               <label for="">First Name</label>
-              <input type="text" placeholder="Enter your first name" required/>
+              <input type="text" name = "FirstName" placeholder="Enter your first name" required/>
             </div>
 
             <div class="input-field">
               <label for="">Middle Name</label>
-              <input type="text" placeholder="Enter your middle name" required/>
+              <input type="text" name = "MiddleName" placeholder="Enter your middle name" required/>
             </div>
 
             <div class="input-field">
               <label for="">Date of Birth</label>
-              <input type="date" placeholder="Enter your birth date" min="1900-01-01" max="2025-03-19" required/>
+              <input type="date" name = "DateBirth" placeholder="Enter your birth date" min="1900-01-01" max="2025-03-19" required/>
             </div>
             
             <div class="input-field">
               <label for="">Age</label>
-              <input type="number" placeholder="Enter your age" id="age" required/>
+              <input type="number" name = "Age" placeholder="Enter your age" id="age" required/>
             </div>
 
             <select class="form-select" aria-label="Default select example" required>
@@ -73,13 +73,13 @@
 
             <div class="input-field">
               <label for="">Username</label>
-              <input type="text" placeholder="Enter your username" required/>
+              <input type="text" name = "Username" placeholder="Enter your username" required/>
             </div>
 
             <div class="input-field">
               <label for="password">Password</label>
               <div class="password-wrapper">
-                <input type="password" id="password" placeholder="Enter your password" required>
+                <input type="password" name = "Password" id="password" placeholder="Enter your password" required>
                 <i class="fa fa-eye-slash toggle-password" id="togglePassword"></i>
               </div>
             </div>
@@ -87,7 +87,7 @@
             <div class="input-field">
               <label for="confirm-password">Confirm Password</label>
               <div class="password-wrapper">
-                <input type="password" id="confirm-password" placeholder="Confirm your password" required>
+                <input type="password" name = "ConPassword" id="confirm-password" placeholder="Confirm your password" required>
                 <i class="fa fa-eye-slash toggle-password" id="toggleConfirmPassword"></i>
               </div>
             </div>
@@ -95,17 +95,17 @@
 
             <div class="input-field">
               <label for="">KLD Email</label>
-              <input type="email" placeholder="Enter your KLD Emai" required/>
+              <input type="email" name = "KLDemail" placeholder="Enter your KLD Emai" required/>
             </div>
 
             <div class="input-field">
               <label for="">ID Number</label>
-              <input type="number" placeholder="Enter your ID number" required/>
+              <input type="number" name = "IDnum" placeholder="Enter your ID number" required/>
             </div>
 
             <div class="input-field">
               <label for="">Contact Number</label>
-              <input type="tel" placeholder="Enter your contact number" required/>
+              <input type="tel" name = "ContactNum" placeholder="Enter your contact number" required/>
             </div>
           </div>
           <br>
