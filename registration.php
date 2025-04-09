@@ -35,17 +35,17 @@
           <div class="fields">
 
             <div class="input-field">
-              <label for="">Last name</label>
+              <label for="">Last Name</label>
               <input type="text" placeholder="Enter your last name" required/>
             </div>
 
             <div class="input-field">
-              <label for="">First name</label>
+              <label for="">First Name</label>
               <input type="text" placeholder="Enter your first name" required/>
             </div>
 
             <div class="input-field">
-              <label for="">Middle name</label>
+              <label for="">Middle Name</label>
               <input type="text" placeholder="Enter your middle name" required/>
             </div>
 
