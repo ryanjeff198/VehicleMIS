@@ -99,12 +99,12 @@
             </div>
 
             <div class="input-field">
-              <label for="">ID no.</label>
+              <label for="">ID Number</label>
               <input type="number" placeholder="Enter your ID number" required/>
             </div>
 
             <div class="input-field">
-              <label for="">Contact no.</label>
+              <label for="">Contact Number</label>
               <input type="tel" placeholder="Enter your contact number" required/>
             </div>
           </div>
