@@ -1,5 +1,5 @@
 <?php
-
+//connection for DATABASE to ui
 class DBcon {
     private $host = "localhost";
     private $db_name = "vehiclesys";

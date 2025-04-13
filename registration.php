@@ -28,7 +28,7 @@
       
       <div class="container">
         <header>Registration</header>
-    <form action="login.php" method="get">
+    <form action="login.php" method="POST">
       <div class="form first">
         <div class="details personal">
           <span class="title">Personal Details</span>
@@ -36,17 +36,17 @@
 
             <div class="input-field">
               <label for="">Last Name</label>
-              <input type="text" name = "LastName" placeholder="Enter your last name" required/>
+              <input type="text" name = "lastName" placeholder="Enter your last name" required/>
             </div>
 
             <div class="input-field">
               <label for="">First Name</label>
-              <input type="text" name = "FirstName" placeholder="Enter your first name" required/>
+              <input type="text" name = "firstName" placeholder="Enter your first name" required/>
             </div>
 
             <div class="input-field">
               <label for="">Middle Name</label>
-              <input type="text" name = "MiddleName" placeholder="Enter your middle name" required/>
+              <input type="text" name = "middleName" placeholder="Enter your middle name" required/>
             </div>
 
             <div class="input-field">
@@ -56,10 +56,10 @@
             
             <div class="input-field">
               <label for="">Age</label>
-              <input type="number" name = "Age" placeholder="Enter your age" id="age" required/>
+              <input type="number" name = "age" placeholder="Enter your age" id="age" required/>
             </div>
 
-            <select class="form-select" aria-label="Default select example" required>
+            <select class="form-select" name = "sex" aria-label="Default select example" required>
               <option selected disabled selected hidden>Sex</option>
               <option value="1">Male</option>
               <option value="2">Female</option>
@@ -71,9 +71,9 @@
           <span class="title">Create Account</span>
           <div class="fields">
 
-            <div class="input-field">
-              <label for="">Username</label>
-              <input type="text" name = "Username" placeholder="Enter your username" required/>
+          <div class="input-field">
+              <label for="">KLD Email</label>
+              <input type="email" name = "kldEmail" placeholder="Enter your KLD Emai" required/>
             </div>
 
             <div class="input-field">
@@ -94,13 +94,8 @@
             
 
             <div class="input-field">
-              <label for="">KLD Email</label>
-              <input type="email" name = "KLDemail" placeholder="Enter your KLD Emai" required/>
-            </div>
-
-            <div class="input-field">
               <label for="">ID Number</label>
-              <input type="number" name = "IDnum" placeholder="Enter your ID number" required/>
+              <input type="number" name = "IDnumber" placeholder="Enter your ID number" required/>
             </div>
 
             <div class="input-field">
