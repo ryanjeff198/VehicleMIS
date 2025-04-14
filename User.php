@@ -14,19 +14,15 @@ class User {
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
-    public function createUser($lastName, $firstName, $middleName, $DateBirth, $age, $sex,  $kldEmail, $password, $confirmPass, $IDnumber, $ContactNumber,): mixed {
-        $sql = "INSERT INTO " . $this->table . " (lastName, firstName, middleName, DateBirth, age, kldEmail, password, IDnumber, ContactNumber) VALUES ( :lastName, :firstName, :middleName, :DateBirth, :age, :kldEmail, :password, :IDnumber, :ContactNumber);";
+    public function createUser($name, $email, $password): mixed {
+        $sql = "INSERT INTO " . $this->table . " (lastName, firstName, kldEmail, password) VALUES (:lastName, firstName, :kldEmail, :password)";
+        
         $stmt = $this->conn->prepare($sql);
         $stmt->bindParam(":lastName", $lastName);
         $stmt->bindParam(":firstName", $firstName);
-        $stmt->bindParam(":middleName", $middleName);
-        $stmt->bindParam(":DateBirth", $DateBirth);
-        $stmt->bindParam(":age", $age);
         $stmt->bindParam(":kldEmail", $kldEmail);
         $stmt->bindParam(":password", password_hash($password, PASSWORD_DEFAULT));
-        $stmt->bindParam(":password", password_hash($confirmPass, PASSWORD_DEFAULT));
-        $stmt->bindParam(":IDnumber", $IDnumber);
-        $stmt->bindParam(":ContactNumber", $ContactNumber);
+    
         return $stmt->execute();
     }
     

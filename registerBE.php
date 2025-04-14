@@ -6,30 +6,19 @@ $database = new Database();
 $conn = $database->connect();
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-$lastName = trim($_POST["lastName"]);
-$firstName = trim($_POST["firstName"]);
-$middleName = trim($_POST["middleName"]);
-$DateBirth = trim($_POST["DateBirth"]);
-$age = trim($_POST["age"]);
-$kldEmail = trim($_POST["kldEmail"]);
-$password = trim($_POST["password"]);
-$IDnumber = trim($_POST["IDnumber"]);
-$ContactNumber = trim($_POST["ContactNumber"]);
+    $lastName = trim($_POST["lasttName"]); 
+    $firstName = trim($_POST["firstName"]);
+    $kldMail = trim($_POST["kldMail"]);
+    $password = trim($_POST["password"]);
 
-if (
-    !empty($lastName) && !empty($firstName) && !empty($middleName) &&
-    !empty($DateBirth) && !empty($age) && !empty($kldEmail) &&
-    !empty($password) && !empty($IDnumber) && !empty($ContactNumber)
-) {
-    $user = new User(db: $conn);
-
+    if (!empty($lastName) && !empty($firstName) && !empty($kldMail) && !empty($password)) {
+        $user = new User(db: $conn);
         
-        if ($user->createUser(lastName: $lastName, firstName: $firstName, middleName: $middleName, DateBirth: $DateBirth, age: $age, kldEmail: $kldEmail, password: $password, IDnumber: $IDnumber, ContactNumber: $ContactNumber
-        )) {
+        if ($user->createUser(lastName: $lastName, firstName: $firstName, kldMail: $kldMail, password: $password)) {
             header("Location: login.php");
             exit();
         } else {
-            echo "Registration failed. Please try again.";
+            echo "Registration failed. Try again.";
         }
     }
 }
