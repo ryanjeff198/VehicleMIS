@@ -14,15 +14,15 @@
           <h1 class="brand-name">KLD</h1>
         </div>
         <ul>
-            <li><a href="index.php">Home</a></li>
-            <li><a href="aboutusbusiness.php">About Us</a></li>
-            <li><a href="login.php">Log in</a></li>
-            <li><a href="registration.php">Create an Account</a></li>
-            <li><a href="contactus.php">Contact Us</a></li>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="aboutusbusiness.html">About Us</a></li>
+            <li><a href="login.html">Log in</a></li>
+            <li><a href="registration.html">Create an Account</a></li>
+            <li><a href="contactus.html">Contact Us</a></li>
         </ul>
       </div>
 
-      <h1><a href="index.php">Back</a></h1>
+      <h1><a href="index.html">Back</a></h1>
     <center><h1>Frequently Asked Question</h1></center>
     <div class="faq-container">
         <div class="faq-group faq-group-1">

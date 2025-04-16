@@ -11,7 +11,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $kldMail = trim($_POST["kldMail"]);
     $password = trim($_POST["password"]);
 
+<<<<<<< Updated upstream
     if (!empty($lastName) && !empty($firstName) && !empty($kldMail) && !empty($password)) {
+=======
+    if (!empty($firstName) && !empty($kldMail) && !empty($password)) {
+>>>>>>> Stashed changes
         $user = new User(db: $conn);
         
         if ($user->createUser(lastName: $lastName, firstName: $firstName, kldMail: $kldMail, password: $password)) {

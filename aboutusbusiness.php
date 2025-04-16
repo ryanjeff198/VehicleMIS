@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="../favicon/favicon.ico">
     <title>KLD Vehicle System</title>
     <style>
         * {
@@ -14,7 +15,7 @@ body {
     position: relative;
     margin: 0;
     padding: 0;
-    background: url("kldbuilding.jpg") center/cover no-repeat;
+    background: url("../img\ folder/kldphoto.jpg") center/cover no-repeat;
 }
   
 body::before {
@@ -178,15 +179,14 @@ body::before {
 
     <div class="navbar">
         <div class="navbar-left">
-          <img src="kldlogo.png" class="logo" alt="Logo">
+          <img src="../img folder/kldlogo.png" class="logo" alt="Logo">
           <h1 class="brand-name">KLD</h1>
         </div>
         <ul>
-            <li><a href="index.php">Home</a></li>
+            <li><a href="index.html">Home</a></li>
             <li><a href="#" class="active">About Us</a></li>
-            <li><a href="login.php">Log in</a></li>
-            <li><a href="registration.php">Create an Account</a></li>
-            <li><a href="contactus.php">Contact Us</a></li>
+            <li><a href="contactus.html">Contact Us</a></li>
+            <li><a href="login.html">Log in</a></li>
         </ul>
       </div>
 
@@ -195,11 +195,11 @@ body::before {
             <h2>About KLD Vehicle System</h2>
             <p>The Kolehiyo ng Lungsod ng Dasmariñas Vehicle System, is to provide an efficient, organized, and accessible vehicle management solution for students and university personnel. It seeks to enhance transportation convenience, ensure safety, regulate vehicle usage within the campus, and improve overall traffic flow. By implementing this system, the university can streamline vehicle registration, monitoring, and access control, ultimately creating a more structured and secure campus transportation environment</p>
 
-            <a href="aboutus.php" class="button-link">About The Developers</a>
+            <a href="aboutus.html" class="button-link">About The Developers</a>
         </div>
 
     <footer class="footer">
-        <p><span class="logo-text"></span> <img src="kldlogo-Photoroom.png" alt="KLD Vehicle System Logo" class="footer-logo"> <span class="logo-text">@ 2025 KLD Vehicle System. All Rights Reserved.</span></p>
+        <p><span class="logo-text"></span> <img src="../img folder/kldlogo.png" alt="KLD Vehicle System Logo" class="footer-logo"> <span class="logo-text">@ 2025 KLD Vehicle System. All Rights Reserved.</span></p>
     </footer>
 
 </body>
