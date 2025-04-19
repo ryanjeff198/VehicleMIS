@@ -4,14 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
-    <link rel="stylesheet" href="admin.css">
+    <link rel="shortcut icon" href="../favicon/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="../css folder/admin.css">
     <title>Admin Page</title>
 </head>
 <body>
     <div class="sidebar">
         <div class="logo-content">
             <div class="logo">
-                <img src="kldlogo.png" alt="kldlogo" width="50px" height="50px" style="margin: 5px;">
+                <img src="../img folder/kldlogo.png" alt="kldlogo" width="50px" height="50px" style="margin: 5px;">
                 <div class="logo-name">Kolehiyo ng Lungsod ng Dasmariñas</div>
             </div>
             <i class='bx bx-menu' id="btn"></i>

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 20, 2025 at 06:22 AM
+-- Generation Time: Apr 16, 2025 at 01:16 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.0.30
 
@@ -57,14 +57,21 @@ CREATE TABLE `proof` (
 
 CREATE TABLE `registration` (
   `ID` int(255) NOT NULL,
-  `firstName` varchar(255) NOT NULL,
   `lastName` varchar(255) NOT NULL,
-  `numID` int(255) NOT NULL,
-  `kldMail` varchar(255) NOT NULL,
-  `user_type` int(2) NOT NULL,
-  `sex` varchar(255) NOT NULL,
+  `firstName` varchar(255) NOT NULL,
+  `kldEmail` varchar(255) NOT NULL,
   `password` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `registration`
+--
+
+INSERT INTO `registration` (`ID`, `lastName`, `firstName`, `kldEmail`, `password`) VALUES
+(1, 'Gerero', 'Jazrell', 'jlsgerero@kld.edu.ph', '$2y$10$XR2iUgYsXMzHaLWVWv36huJyQxhOmvbwhtAiCaELLpHauEmEQ0dL.'),
+(2, 'Gerero', 'Jazrell', 'jlsgerero@kld.edu.ph', '$2y$10$n7C6d9M5oQpooWVE/KAv1.7ozHi9FOLQM6QgcGMzEG0QcgBuL/ZXS'),
+(3, 'Gerero', 'Jazrell', 'jlsgereros@kld.edu.ph', '$2y$10$C0.FRLtSGMHdw9h52bfZaeYjkpC/UOsIAA20UBrgK67MWoNzFQdOe'),
+(4, 'Gerero', 'Jazrell', 'jlgsabitero@kld.edu.ph', '$2y$10$DdRLxzE28LtOi0NTisOEqe.DacGbhTP8NNpXescxr5/mv8E0DONYi');
 
 -- --------------------------------------------------------
 
@@ -187,7 +194,7 @@ ALTER TABLE `proof`
 -- AUTO_INCREMENT for table `registration`
 --
 ALTER TABLE `registration`
-  MODIFY `ID` int(255) NOT NULL AUTO_INCREMENT;
+  MODIFY `ID` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `vehicle_info`

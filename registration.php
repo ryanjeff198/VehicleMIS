@@ -16,11 +16,11 @@
       <h1 class="brand-name">KLD</h1>
     </div>
     <ul>
-      <li><a href="index.php">Home</a></li>
-      <li><a href="aboutus.php">About Us</a></li>
-      <li><a href="login.php">Log in</a></li>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="aboutus.html">About Us</a></li>
+      <li><a href="login.html">Log in</a></li>
       <li><a href="#" class="active">Create an Account</a></li>
-      <li><a href="contactus.php">Contact Us</a></li>
+      <li><a href="contactus.html">Contact Us</a></li>
   </ul>
 
     <div class="menu-icon" onclick="toggleMenu()">☰</div>
@@ -28,7 +28,7 @@
       
       <div class="container">
         <header>Registration</header>
-    <form action="login.php" method="POST">
+    <form action="login.html" method="get">
       <div class="form first">
         <div class="details personal">
           <span class="title">Personal Details</span>
@@ -36,30 +36,30 @@
 
             <div class="input-field">
               <label for="">Last Name</label>
-              <input type="text" name = "lastName" placeholder="Enter your last name" required/>
+              <input type="text" placeholder="Enter your last name" required/>
             </div>
 
             <div class="input-field">
               <label for="">First Name</label>
-              <input type="text" name = "firstName" placeholder="Enter your first name" required/>
+              <input type="text" placeholder="Enter your first name" required/>
             </div>
 
             <div class="input-field">
               <label for="">Middle Name</label>
-              <input type="text" name = "middleName" placeholder="Enter your middle name" required/>
+              <input type="text" placeholder="Enter your middle name" required/>
             </div>
 
             <div class="input-field">
               <label for="">Date of Birth</label>
-              <input type="date" name = "DateBirth" placeholder="Enter your birth date" min="1900-01-01" max="2025-03-19" required/>
+              <input type="date" placeholder="Enter your birth date" min="1900-01-01" max="2025-03-19" required/>
             </div>
             
             <div class="input-field">
               <label for="">Age</label>
-              <input type="number" name = "age" placeholder="Enter your age" id="age" required/>
+              <input type="number" placeholder="Enter your age" id="age" required/>
             </div>
 
-            <select class="form-select" name = "sex" aria-label="Default select example" required>
+            <select class="form-select" aria-label="Default select example" required>
               <option selected disabled selected hidden>Sex</option>
               <option value="1">Male</option>
               <option value="2">Female</option>
@@ -71,15 +71,15 @@
           <span class="title">Create Account</span>
           <div class="fields">
 
-          <div class="input-field">
-              <label for="">KLD Email</label>
-              <input type="email" name = "kldEmail" placeholder="Enter your KLD Emai" required/>
+            <div class="input-field">
+              <label for="">Username</label>
+              <input type="text" placeholder="Enter your username" required/>
             </div>
 
             <div class="input-field">
               <label for="password">Password</label>
               <div class="password-wrapper">
-                <input type="password" name = "Password" id="password" placeholder="Enter your password" required>
+                <input type="password" id="password" placeholder="Enter your password" required>
                 <i class="fa fa-eye-slash toggle-password" id="togglePassword"></i>
               </div>
             </div>
@@ -87,20 +87,25 @@
             <div class="input-field">
               <label for="confirm-password">Confirm Password</label>
               <div class="password-wrapper">
-                <input type="password" name = "ConPassword" id="confirm-password" placeholder="Confirm your password" required>
+                <input type="password" id="confirm-password" placeholder="Confirm your password" required>
                 <i class="fa fa-eye-slash toggle-password" id="toggleConfirmPassword"></i>
               </div>
             </div>
             
 
             <div class="input-field">
-              <label for="">ID Number</label>
-              <input type="number" name = "IDnumber" placeholder="Enter your ID number" required/>
+              <label for="">KLD Email</label>
+              <input type="email" placeholder="Enter your KLD Emai" required/>
             </div>
 
             <div class="input-field">
-              <label for="">Contact Number</label>
-              <input type="tel" name = "ContactNum" placeholder="Enter your contact number" required/>
+              <label for="">ID no.</label>
+              <input type="number" placeholder="Enter your ID number" required/>
+            </div>
+
+            <div class="input-field">
+              <label for="">Contact no.</label>
+              <input type="tel" placeholder="Enter your contact number" required/>
             </div>
           </div>
           <br>
@@ -109,7 +114,7 @@
             <i class='bx bx-right-arrow-alt'></i>
           </button></center>
           <center>
-          </center><p class="login-text">Already have an account? <a href="login.php"> Login</a></p>
+          </center><p class="login-text">Already have an account? <a href="login.html"> Login</a></p>
             
         </div>
       </div>
@@ -256,7 +261,7 @@ document.getElementById("toggleConfirmPassword").addEventListener("click", funct
 document.querySelector("button[type='submit']").addEventListener("click", function(event) {
   event.preventDefault();
   console.log("Redirecting...");
-  window.location.href = "userdashboard.php";
+  window.location.href = "userdashboard.html";
 });
 
   </script>
