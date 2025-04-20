@@ -20,9 +20,9 @@
         </ul>
         <ul>
             <li class="brand"><a href="#"><img src="../img folder/kldlogo.png" alt="kld logo"> KLD</a></li>
-            <li class="hideOnMobile"><a href="#">Home</a></li>
-            <li class="hideOnMobile"><a href="#">Contact us</a></li>
-            <li class="hideOnMobile"><a href="#">Login</a></li>
+            <li class="hideOnMobile"><a href="index.php">Home</a></li>
+            <li class="hideOnMobile"><a href="contactus.php">Contact us</a></li>
+            <li class="hideOnMobile"><a href="login.php">Login</a></li>
             <li class="menu-button" onclick="showSidebar()"><a href="#"><i class='bx bx-menu' style="font-size: 30px;"></i></a></li>
         </ul>
     </nav>
