@@ -98,11 +98,8 @@ if (isset($_SESSION["error"])) {
 <!--THIS IS LOGIN-->
 <center>
     <div class="wrapper" id="loginForm">
-<<<<<<< Updated upstream
         <form action="../registerBE.php" method="POST">
-=======
         <form action="../html folder/signIN.php" method="POST">
->>>>>>> Stashed changes
             <img src="../img folder/kldlogo.png" alt="kld logo">
             <hr color="green">
             <br>
@@ -113,11 +110,8 @@ if (isset($_SESSION["error"])) {
                 <i class='bx bxs-user'></i>
             </div>
             <div class="input-box">
-<<<<<<< Updated upstream
-                <input type="password" id="loginPassword" placeholder="Password" required>
-=======
                 <input type="password" name = "password" id="loginPassword" placeholder="Password" required>
->>>>>>> Stashed changes
+
                 <i class='bx bxs-lock-alt'></i>
                 <span class="toggle-password" onclick="togglePassword('loginPassword', 'toggleLoginPassword')">
                     <i class="fa fa-eye-slash" id="toggleLoginPassword"></i>
@@ -152,31 +146,24 @@ if (isset($_SESSION["error"])) {
                 <i class='bx bxs-user'></i>
             </div>
             <div class="input-box">
-<<<<<<< Updated upstream
+
                 <input type="text" placeholder="KLD Email" required>
-=======
                 <input type="text" name = "kldEmail" placeholder="KLD Email" required>
->>>>>>> Stashed changes
                 <label for=""></label>
                 <i class='bx bxs-envelope'></i>
             </div>
             <div class="input-box">
-<<<<<<< Updated upstream
+
                 <input type="password" id="registerPassword" placeholder="Password" required>
-=======
                 <input type="password" name = "password" id="registerPassword" placeholder="Password" required>
->>>>>>> Stashed changes
                 <i class='bx bxs-lock-alt'></i>
                 <span class="toggle-password" onclick="togglePassword('registerPassword', 'toggleRegisterPassword')">
                     <i class="fa fa-eye-slash" id="toggleRegisterPassword"></i>
                 </span>
             </div>
             <div class="input-box">
-<<<<<<< Updated upstream
                 <input type="password" id="confirmPassword" placeholder="Confirm Password" required>
-=======
                 <input type="password" name = "confirmPassword" id="confirmPassword" placeholder="Confirm Password" required>
->>>>>>> Stashed changes
                 <i class='bx bxs-lock-alt'></i>
                 <span class="toggle-password" onclick="togglePassword('confirmPassword', 'toggleConfirmPassword')">
                     <i class="fa fa-eye-slash" id="toggleConfirmPassword"></i>
