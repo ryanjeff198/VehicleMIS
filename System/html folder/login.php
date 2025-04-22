@@ -95,7 +95,11 @@ if (isset($_SESSION["error"])) {
 <!--THIS IS LOGIN-->
 <center>
     <div class="wrapper" id="loginForm">
+<<<<<<< HEAD
         <form action="../html folder/userdashboard.php" method="POST">
+=======
+        <form action="../registerBE.php" method="POST">
+>>>>>>> c1b81c58bcee819d04b1cf5f81f66ff5aa505763
         <form action="../html folder/signIN.php" method="POST">
             <img src="../img folder/kldlogo.png" alt="kld logo">
             <hr color="green">
@@ -107,8 +111,13 @@ if (isset($_SESSION["error"])) {
                 <i class='bx bxs-user'></i>
             </div>
             <div class="input-box">
+<<<<<<< HEAD
                 <input type="password" id="loginPassword" placeholder="Password" required>
                 <input type="password" name = "password" id="loginPassword" placeholder="Password" required>
+=======
+                <input type="password" name = "password" id="loginPassword" placeholder="Password" required>
+
+>>>>>>> c1b81c58bcee819d04b1cf5f81f66ff5aa505763
                 <i class='bx bxs-lock-alt'></i>
                 <span class="toggle-password" onclick="togglePassword('loginPassword', 'toggleLoginPassword')">
                     <i class="fa fa-eye-slash" id="toggleLoginPassword"></i>
@@ -143,12 +152,20 @@ if (isset($_SESSION["error"])) {
                 <i class='bx bxs-user'></i>
             </div>
             <div class="input-box">
+<<<<<<< HEAD
+=======
+
+>>>>>>> c1b81c58bcee819d04b1cf5f81f66ff5aa505763
                 <input type="text" placeholder="KLD Email" required>
                 <input type="text" name = "kldEmail" placeholder="KLD Email" required>
                 <label for=""></label>
                 <i class='bx bxs-envelope'></i>
             </div>
             <div class="input-box">
+<<<<<<< HEAD
+=======
+
+>>>>>>> c1b81c58bcee819d04b1cf5f81f66ff5aa505763
                 <input type="password" id="registerPassword" placeholder="Password" required>
                 <input type="password" name = "password" id="registerPassword" placeholder="Password" required>
                 <i class='bx bxs-lock-alt'></i>
