@@ -1,4 +1,5 @@
 <?php
+session_start();
 class User {
     private $conn;
     private $table = "registration";
@@ -8,7 +9,6 @@ class User {
     }
 
     public function createUser($lastName, $firstName, $kldEmail, $password): mixed {
-        // Check if kldEmail already exists
         $checkSql = "SELECT COUNT(*) FROM " . $this->table . " WHERE kldEmail = :kldEmail";
         $checkStmt = $this->conn->prepare($checkSql);
         $checkStmt->bindParam(":kldEmail", $kldEmail);
@@ -16,10 +16,9 @@ class User {
         $emailExists = $checkStmt->fetchColumn();
 
         if ($emailExists > 0) {
-            return false; // Email already in use
+            return false;
         }
 
-        // Proceed with insert if not duplicate
         $sql = "INSERT INTO " . $this->table . " (lastName, firstName, kldEmail, password) 
                 VALUES (:lastName, :firstName, :kldEmail, :password)";
 
@@ -33,7 +32,7 @@ class User {
 
         return $stmt->execute();
     }
-    //fetch data from table to login
+
     public function loginUser($kldEmail, $password): mixed {
         $sql = "SELECT * FROM " . $this->table . " WHERE kldEmail = :kldEmail LIMIT 1";
         $stmt = $this->conn->prepare($sql);
@@ -43,9 +42,24 @@ class User {
         $user = $stmt->fetch(PDO::FETCH_ASSOC);
 
         if ($user && password_verify($password, $user["password"])) {
-            return $user; // Login success
+            $_SESSION["user"] = [
+                "ID" => $user["ID"],
+                "firstName" => $user["firstName"],
+                "lastName" => $user["lastName"],
+                "email" => $user["kldEmail"]
+            ];
+            header("Location: dashboard.php");
+            exit();
         }
 
-        return false; // Login failed
+        return false;
+    }
+
+    // ✅ NEW METHOD: fetch all users for admin page
+    public function fetchAllUsers(): array {
+        $sql = "SELECT ID, firstName, lastName, kldEmail FROM " . $this->table;
+        $stmt = $this->conn->prepare($sql);
+        $stmt->execute();
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 }

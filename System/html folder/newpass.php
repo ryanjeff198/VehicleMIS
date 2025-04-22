@@ -27,13 +27,13 @@
         <form action="#" method="post">
 
             <label for="npw">Current password</label>
-            <input type="password" id="crpw" placeholder="Enter current password">
+            <input type="password" name = "currentPass" id="crpw" placeholder="Enter current password">
 
             <label for="npw">New password</label>
-            <input type="password" id="npw" placeholder="Enter new password">
+            <input type="password" name = "confirmPass1" id="npw" placeholder="Enter new password">
 
             <label for="cpw">Confirm password</label>
-            <input type="password" id="cpw" placeholder="Confirm new password">
+            <input type="password"  name = "confirmPass2" id="cpw" placeholder="Confirm new password">
 
             <div class="checkbox-container">
                 <input type="checkbox" id="show-password" onclick="togglePassword()">

@@ -1,3 +1,15 @@
+<?php
+require_once "DBcon.php";
+require_once "User.php";
+
+$DBcon = new DBcon();
+$conn = $DBcon->connect();
+
+$user = new User($conn);
+$allUsers = $user->fetchAllUsers();
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -128,6 +140,23 @@
             </div>
         </div>
     </div>
+
+    <table border="1" cellpadding="10">
+        <tr>
+            <th>ID</th>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>KLD Email</th>
+        </tr>
+        <?php foreach ($allUsers as $usr): ?>
+            <tr>
+                <td><?= htmlspecialchars($usr["ID"]) ?></td>
+                <td><?= htmlspecialchars($usr["firstName"]) ?></td>
+                <td><?= htmlspecialchars($usr["lastName"]) ?></td>
+                <td><?= htmlspecialchars($usr["kldEmail"]) ?></td>
+            </tr>
+        <?php endforeach; ?>
+    </table>
 </div>
 
 <script>

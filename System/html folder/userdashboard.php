@@ -1,14 +1,26 @@
+<?php
+session_start();
+
+// Optional: redirect if not logged in
+if (!isset($_SESSION["user"])) {
+    header("Location: login.php");
+    exit();
+}
+
+// Access user data
+$firstName = $_SESSION["user"]["firstName"];
+$lastName = $_SESSION["user"]["lastName"];
+$kldEmail = $_SESSION["user"]["kldEmail"];
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
-<<<<<<< Updated upstream
     <link rel="stylesheet" href="../css folder/admin.css">
-=======
     <link rel="stylesheet" href="admin.css">
->>>>>>> Stashed changes
     <title>User Page</title>
 </head>
 <body>
@@ -101,14 +113,14 @@
     </div>
     <div class="text">Home</div>
     <div class="insights-container">
-        <h2>👋 Welcome back, Lucky!</h2>
+        <h2>👋 Welcome back, <?= htmlspecialchars($firstName) ?>!</h2>
         <h3>Insights</h3>
     
         <div class="content">
             <div class="card">
                 <h3>User Profile</h3>
-                <p>Name: Ryan Lucky</p>
-                <p>Email: RL@KLD.com</p>
+                <p>Name: <?= htmlspecialchars($firstName . ' ' . $lastName)?></p>
+                <p>Email: <?= htmlspecialchars($kldEmail)?></p>
                 <a href="#" class="button">Edit Profile</a>
             </div>
             <div class="card">
