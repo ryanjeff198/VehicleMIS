@@ -21,7 +21,7 @@ $allUsers = $user->fetchAllUsers();
     <title>Admin Page</title>
 </head>
 <body>
-    <div class="sidebar">
+<div class="sidebar">
         <div class="logo-content">
             <div class="logo">
                 <img src="../img folder/kldlogo.png" alt="kldlogo" width="50px" height="50px" style="margin: 5px;">
@@ -46,7 +46,7 @@ $allUsers = $user->fetchAllUsers();
             <li>
                 <a href="#">
                     <i class='bx bx-user' ></i>
-                    <span class="links-name">User</span>
+                    <span class="links-name">Profile</span>
                 </a>
                 <span class="tooltip">User</span>
             </li>
@@ -59,15 +59,15 @@ $allUsers = $user->fetchAllUsers();
             </li>
             <li>
                 <a href="#">
-                    <i class='bx bx-line-chart' ></i>
-                    <span class="links-name">Analytics</span>
+                    <i class='bx bxs-megaphone'></i>
+                    <span class="links-name">Announcements</span>
                 </a>
                 <span class="tooltip">Analytics</span>
             </li>
             <li>
                 <a href="#">
                     <i class='bx bx-folder-open' ></i>
-                    <span class="links-name">File Manager</span>
+                    <span class="links-name">Files</span>
                 </a>
                 <span class="tooltip">Files</span>
             </li>
@@ -93,72 +93,116 @@ $allUsers = $user->fetchAllUsers();
                 <span class="tooltip">Settings</span>
             </li>
         </ul>
-        <div class="profile-content">
-            <div class="profile">
-                <div class="profile-details">
-                    <img src="jeff.jpg" alt="">
-                    <div class="name-job">
-                        <div class="name">Ryan Jeff L. Felizardo </div>
-                            <div class="job">IS Manager</div>
-                    </div>
-                </div>
-                <i class='bx bx-log-out' id="log-out" ></i>
-            </div>
-        </div>
     </div>
 
 <div class="home-content">
+    <div class="navbar">
+        <div class="navbar-left">
+            <img src="../img folder/kldlogo.png   " class="logo" alt="KLD Vehicle Logo">
+            <h3 class="brand-name">KLD</h3>
+        </div>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="aboutusbusiness.html">About Us</a></li>
+            <li><a href="contactus.html">Contact Us</a></li>
+            <li><a href="login.html" class="active">Logout</a></li>
+        </ul>
+    </div>
     <div class="text">Home</div>
     <div class="insights-container">
-        <h2>👋 Welcome back, Ryan!</h2>
+        <h2>👋 Welcome back, Lucky!</h2>
         <h3>Insights</h3>
     
-        <div class="insights-grid">
-            <div class="insight-box">
-                <p class="insight-number">100 <span class="info-icon">ℹ️</span></p>
-                <p class="insight-label">Active User</p>
+        <div class="container">
+            <h2>Dashboard: Data Insights</h2>
+    
+            <div class="card">
+                <h3>Vehicle Registered</h3>
+                <canvas id="visitorsChart" width="150" height="100"></canvas>
             </div>
-            <div class="insight-box">
-                <p class="insight-number">6 <span class="info-icon">ℹ️</span></p>
-                <p class="insight-label">Inactive User</p>
+    
+            <div class="card">
+                <h3>Pending Payments</h3>
+                <canvas id="trafficChart" width="150" height="100"></canvas>
             </div>
-            <div class="insight-box">
-                <p class="insight-number">9 <span class="info-icon">ℹ️</span></p>
-                <p class="insight-label">Managers</p>
+    
+            <div class="card">
+                <h3>Approval Duration</h3>
+                <canvas id="approvalChart" width="150" height="100"></canvas>
             </div>
-            <div class="insight-box">
-                <p class="insight-number">0 <span class="info-icon">ℹ️</span></p>
-                <p class="insight-label">Pending Activation</p>
-            </div>
-            <div class="insight-box">
-                <p class="insight-number">6,807 <span class="info-icon">ℹ️</span></p>
-                <p class="insight-label">Time Spent</p>
-            </div>
-            <div class="insight-box">
-                <p class="insight-number">58 <span class="info-icon">ℹ️</span></p>
-                <p class="insight-label">User Violation</p>
+    
+            <div class="card">
+                <h3>Engagement by Platform</h3>
+                <canvas id="engagementChart" width="150" height="100"></canvas>
             </div>
         </div>
+
+    <h3 style="margin-top: 30px; margin-left: 20px;">User Information</h3>
+    <div class="user-info-table">
+        <table>
+            <thead>
+                <tr>
+                    <th>Full Name</th>
+                    <th>Email Address</th>
+                    <th>Username</th>
+                    <th>Role</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php foreach ($allUsers as $usr): ?>
+                <tr>
+                    <td><?= htmlspecialchars($usr["ID"]) ?></td>
+                    <td><?= htmlspecialchars($usr["firstName"]) ?></td>
+                    <td><?= htmlspecialchars($usr["lastName"]) ?></td>
+                    <td><?= htmlspecialchars($usr["kldEmail"]) ?></td>
+                    <td><div class="action-dropdown">
+                        <i class='bx bx-cog action-icon' onclick="toggleDropdown()"></i>
+                        <div class="dropdown-menu" id="dropdownMenu">
+                            <button class="dropdown-item"><i class='bx bx-edit'></i> Edit</button>
+                            <button class="dropdown-item"><i class='bx bx-trash'></i> Delete</button>
+                        </div>
+                    </div></td>
+                    <?php endforeach; ?>
+                </tr>
+
+                <?php foreach ($allUsers as $usr): ?>
+                <tr>
+                    <td><?= htmlspecialchars($usr["ID"]) ?></td>
+                    <td><?= htmlspecialchars($usr["firstName"]) ?></td>
+                    <td><?= htmlspecialchars($usr["lastName"]) ?></td>
+                    <td><?= htmlspecialchars($usr["kldEmail"]) ?></td>
+                    <td><div class="action-dropdown">
+                        <i class='bx bx-cog action-icon' onclick="toggleDropdown()"></i>
+                        <div class="dropdown-menu" id="dropdownMenu">
+                            <button class="dropdown-item"><i class='bx bx-edit'></i> Edit</button>
+                            <button class="dropdown-item"><i class='bx bx-trash'></i> Delete</button>
+                        </div>
+                    </div></td>
+                    <?php endforeach; ?>
+                </tr>
+
+                <?php foreach ($allUsers as $usr): ?>
+                <tr>
+                    <td><?= htmlspecialchars($usr["ID"]) ?></td>
+                    <td><?= htmlspecialchars($usr["firstName"]) ?></td>
+                    <td><?= htmlspecialchars($usr["lastName"]) ?></td>
+                    <td><?= htmlspecialchars($usr["kldEmail"]) ?></td>
+                    <td><div class="action-dropdown">
+                        <i class='bx bx-cog action-icon' onclick="toggleDropdown()"></i>
+                        <div class="dropdown-menu" id="dropdownMenu">
+                            <button class="dropdown-item"><i class='bx bx-edit'></i> Edit</button>
+                            <button class="dropdown-item"><i class='bx bx-trash'></i> Delete</button>
+                        </div>
+                    </div></td>
+                    <?php endforeach; ?>
+                </tr>
+                
+            </tbody>
+        </table>
     </div>
 
-    <table border="1" cellpadding="10">
-        <tr>
-            <th>ID</th>
-            <th>First Name</th>
-            <th>Last Name</th>
-            <th>KLD Email</th>
-        </tr>
-        <?php foreach ($allUsers as $usr): ?>
-            <tr>
-                <td><?= htmlspecialchars($usr["ID"]) ?></td>
-                <td><?= htmlspecialchars($usr["firstName"]) ?></td>
-                <td><?= htmlspecialchars($usr["lastName"]) ?></td>
-                <td><?= htmlspecialchars($usr["kldEmail"]) ?></td>
-            </tr>
-        <?php endforeach; ?>
-    </table>
-</div>
-
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script>
 
 let btn = document.querySelector("#btn");
@@ -172,6 +216,107 @@ btn.onclick = function(){
 searchBtn.onclick = function(){
     sidebar.classList.toggle("active");
 }
+
+function toggleDropdown() {
+    const menu = document.getElementById("dropdownMenu");
+    menu.style.display = (menu.style.display === "block") ? "none" : "block";
+}
+
+// Optional: Close dropdown if clicked outside
+window.onclick = function(event) {
+    if (!event.target.matches('.action-icon')) {
+        const dropdowns = document.getElementsByClassName("dropdown-menu");
+        for (let i = 0; i < dropdowns.length; i++) {
+            dropdowns[i].style.display = "none";
+        }
+    }
+}
+
+new Chart(document.getElementById('visitorsChart').getContext('2d'), {
+    type: 'bar',
+    data: {
+        labels: ['Jan', 'Feb', 'Mar', 'Apr'],
+        datasets: [{
+            label: 'Visitors',
+            data: [120, 150, 180, 200],
+            backgroundColor: '#1f9335'
+        }]
+    },
+    options: {
+        responsive: true,
+        plugins: {
+            title: { display: true, text: 'Monthly Visitors' }
+        }
+    }
+});
+
+
+new Chart(document.getElementById('trafficChart').getContext('2d'), {
+    type: 'pie',
+    data: {
+        labels: ['Direct', 'Referral', 'Social Media'],
+        datasets: [{
+            label: 'Traffic',
+            data: [55, 25, 20],
+            backgroundColor: ['#1f9335', '#66bb6a', '#a5d6a7']
+        }]
+    },
+    options: {
+        responsive: true,
+        plugins: {
+            title: { display: true, text: 'Violation' }
+        }
+    }
+});
+
+new Chart(document.getElementById('approvalChart').getContext('2d'), {
+    type: 'doughnut',
+    data: {
+        labels: ['Approved', 'Pending'],
+        datasets: [{
+            label: 'Approval Rate',
+            data: [10, 90],
+            backgroundColor: ['#1f9335', '#a5d6a7']
+        }]
+    },
+    options: {
+        responsive: true,
+        plugins: {
+            title: { display: true, text: 'Vehicle Rgistration' }
+        }
+    }
+});
+
+new Chart(document.getElementById('engagementChart').getContext('2d'), {
+    type: 'bar',
+    data: {
+        labels: ['Twitter', 'Facebook', 'Instagram'],
+        datasets: [
+            {
+                label: 'Jan',
+                data: [20, 15, 25],
+                backgroundColor: '#1f9335'
+            },
+            {
+                label: 'Feb',
+                data: [25, 35, 15],
+                backgroundColor: '#66bb6a'
+            },
+            {
+                label: 'Mar',
+                data: [50, 40, 35],
+                backgroundColor: '#a5d6a7'
+            }
+        ]
+    },
+    options: {
+        responsive: true,
+        plugins: {
+            title: { display: true, text: 'Engagement by Platform' }
+        }
+    }
+});
+
 
 </script>
 
