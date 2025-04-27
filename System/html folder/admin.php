@@ -95,112 +95,103 @@ $allUsers = $user->fetchAllUsers();
         </ul>
     </div>
 
-<div class="home-content">
-    <div class="navbar">
-        <div class="navbar-left">
-            <img src="../img folder/kldlogo.png   " class="logo" alt="KLD Vehicle Logo">
-            <h3 class="brand-name">KLD</h3>
-        </div>
-        <ul>
-            <li><a href="index.html">Home</a></li>
-            <li><a href="aboutusbusiness.html">About Us</a></li>
-            <li><a href="contactus.html">Contact Us</a></li>
-            <li><a href="login.html" class="active">Logout</a></li>
-        </ul>
+    <div class="home-content">
+        <div class="navbar">
+            <div class="navbar-left">
+              <img src="../../img folder/kldlogo.png" class="logo" alt="KLD Vehicle Logo"> 
+              <h3 class="brand-name">KLD</h3>
+            </div>
+          
+            <div class="profile-dropdown">
+              <img src="../../img folder/noprofile.png" alt="gnik" class="profile" id="profileBtn"> <!--THIS IS FOR PROFILE PICTURE-->
+              <div class="dropdown-content" id="profileDropdown">
+                <a href="#">My Profile</a>
+                <a href="#">Settings</a>
+                <a href="#">Logout</a>
+              </div>
+            </div>
+          </div>
+
+
+        <h3 style="margin-top: 30px; margin-left: 20px;">User Information</h3>
+<div class="user-info-table">
+    <table>
+        <thead>
+            <tr>
+                <th>Full Name</th>
+                <th>Email Address</th>
+                <th>Username</th>
+                <th>Role</th>
+                <th>Status</th>
+            </tr>
+        </thead>
+        <tbody id="userTableBody">
+            <?php foreach ($allUsers as $usr): ?>
+            <tr id="userRow<?= $usr['ID'] ?>">
+                <td><?= htmlspecialchars($usr["firstName"]) ?> <?= htmlspecialchars($usr["lastName"]) ?></td>
+                <td><?= htmlspecialchars($usr["kldEmail"]) ?></td>
+                <td><?= htmlspecialchars($usr["username"]) ?></td>
+                <td><?= htmlspecialchars($usr["role"]) ?></td>
+                <td>
+                    <div class="action-dropdown">
+                        <i class='bx bx-cog action-icon' onclick="toggleDropdown(<?= $usr['ID'] ?>)"></i>
+                        <div class="dropdown-menu" id="dropdownMenu<?= $usr['ID'] ?>">
+                            <button class="dropdown-item" onclick="openEditModal(<?= $usr['ID'] ?>, '<?= htmlspecialchars($usr["firstName"]) ?>', '<?= htmlspecialchars($usr["lastName"]) ?>', '<?= htmlspecialchars($usr["kldEmail"]) ?>', '<?= htmlspecialchars($usr["username"]) ?>', '<?= htmlspecialchars($usr["role"]) ?>')">
+                                <i class='bx bx-edit'></i> Edit
+                            </button>
+                            <button class="dropdown-item" onclick="deleteUser(<?= $usr['ID'] ?>)">
+                                <i class='bx bx-trash'></i> Delete
+                            </button>
+                            <button class="dropdown-item" onclick="archiveUser(<?= $usr['ID'] ?>)">
+                                <i class='bx bx-archive-in'></i> Archive
+                            </button>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+            <?php endforeach; ?>
+        </tbody>
+    </table>
+
+    <h3 style="margin-top: 50px; margin-left: 20px;">Archived Users</h3>
+    <table class="table" id="archiveTable">
+        <thead>
+            <tr>
+                <th>User ID</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Date Archived</th>
+                <th>Restore</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Archived Users will be added dynamically -->
+        </tbody>
+    </table>
+</div>
+
+<!-- Edit User Modal -->
+<div id="editModal" class="modal">
+    <div class="modal-content">
+      <span class="close-button" onclick="closeModal()">&times;</span>
+      <h2>Edit User</h2>
+      <form id="editUserForm">
+        <input type="hidden" id="editUserId">
+        <label>First Name:</label>
+        <input type="text" id="editFirstName" required>
+        <label>Last Name:</label>
+        <input type="text" id="editLastName" required>
+        <label>Email:</label>
+        <input type="email" id="editEmail" required>
+        <label>Username:</label>
+        <input type="text" id="editUsername" required>
+        <label>Role:</label>
+        <input type="text" id="editRole" required>
+        <button type="submit" class="btn-save">Save Changes</button>
+      </form>
     </div>
-    <div class="text">Home</div>
-    <div class="insights-container">
-        <h2>👋 Welcome back, Lucky!</h2>
-        <h3>Insights</h3>
-    
-        <div class="container">
-            <h2>Dashboard: Data Insights</h2>
-    
-            <div class="card">
-                <h3>Vehicle Registered</h3>
-                <canvas id="visitorsChart" width="150" height="100"></canvas>
-            </div>
-    
-            <div class="card">
-                <h3>Pending Payments</h3>
-                <canvas id="trafficChart" width="150" height="100"></canvas>
-            </div>
-    
-            <div class="card">
-                <h3>Approval Duration</h3>
-                <canvas id="approvalChart" width="150" height="100"></canvas>
-            </div>
-    
-            <div class="card">
-                <h3>Engagement by Platform</h3>
-                <canvas id="engagementChart" width="150" height="100"></canvas>
-            </div>
-        </div>
-
-    <h3 style="margin-top: 30px; margin-left: 20px;">User Information</h3>
-    <div class="user-info-table">
-        <table>
-            <thead>
-                <tr>
-                    <th>Full Name</th>
-                    <th>Email Address</th>
-                    <th>Username</th>
-                    <th>Role</th>
-                    <th>Status</th>
-                </tr>
-            </thead>
-            <tbody>
-                <?php foreach ($allUsers as $usr): ?>
-                <tr>
-                    <td><?= htmlspecialchars($usr["ID"]) ?></td>
-                    <td><?= htmlspecialchars($usr["firstName"]) ?></td>
-                    <td><?= htmlspecialchars($usr["lastName"]) ?></td>
-                    <td><?= htmlspecialchars($usr["kldEmail"]) ?></td>
-                    <td><div class="action-dropdown">
-                        <i class='bx bx-cog action-icon' onclick="toggleDropdown()"></i>
-                        <div class="dropdown-menu" id="dropdownMenu">
-                            <button class="dropdown-item"><i class='bx bx-edit'></i> Edit</button>
-                            <button class="dropdown-item"><i class='bx bx-trash'></i> Delete</button>
-                        </div>
-                    </div></td>
-                    <?php endforeach; ?>
-                </tr>
-
-                <?php foreach ($allUsers as $usr): ?>
-                <tr>
-                    <td><?= htmlspecialchars($usr["ID"]) ?></td>
-                    <td><?= htmlspecialchars($usr["firstName"]) ?></td>
-                    <td><?= htmlspecialchars($usr["lastName"]) ?></td>
-                    <td><?= htmlspecialchars($usr["kldEmail"]) ?></td>
-                    <td><div class="action-dropdown">
-                        <i class='bx bx-cog action-icon' onclick="toggleDropdown()"></i>
-                        <div class="dropdown-menu" id="dropdownMenu">
-                            <button class="dropdown-item"><i class='bx bx-edit'></i> Edit</button>
-                            <button class="dropdown-item"><i class='bx bx-trash'></i> Delete</button>
-                        </div>
-                    </div></td>
-                    <?php endforeach; ?>
-                </tr>
-
-                <?php foreach ($allUsers as $usr): ?>
-                <tr>
-                    <td><?= htmlspecialchars($usr["ID"]) ?></td>
-                    <td><?= htmlspecialchars($usr["firstName"]) ?></td>
-                    <td><?= htmlspecialchars($usr["lastName"]) ?></td>
-                    <td><?= htmlspecialchars($usr["kldEmail"]) ?></td>
-                    <td><div class="action-dropdown">
-                        <i class='bx bx-cog action-icon' onclick="toggleDropdown()"></i>
-                        <div class="dropdown-menu" id="dropdownMenu">
-                            <button class="dropdown-item"><i class='bx bx-edit'></i> Edit</button>
-                            <button class="dropdown-item"><i class='bx bx-trash'></i> Delete</button>
-                        </div>
-                    </div></td>
-                    <?php endforeach; ?>
-                </tr>
-                
-            </tbody>
-        </table>
-    </div>
+  </div>
+  
 
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script>
@@ -217,105 +208,133 @@ searchBtn.onclick = function(){
     sidebar.classList.toggle("active");
 }
 
+// Profile Dropdown
+const profileBtn = document.getElementById('profileBtn');
+const profileDropdown = document.getElementById('profileDropdown');
+
+profileBtn.addEventListener('click', () => {
+  profileDropdown.style.display = profileDropdown.style.display === 'block' ? 'none' : 'block';
+});
+
+// Close dropdown when clicking outside
+window.addEventListener('click', function(e) {
+  if (!profileBtn.contains(e.target) && !profileDropdown.contains(e.target)) {
+    profileDropdown.style.display = 'none';
+  }
+});
+
 function toggleDropdown() {
     const menu = document.getElementById("dropdownMenu");
     menu.style.display = (menu.style.display === "block") ? "none" : "block";
 }
 
-// Optional: Close dropdown if clicked outside
-window.onclick = function(event) {
-    if (!event.target.matches('.action-icon')) {
-        const dropdowns = document.getElementsByClassName("dropdown-menu");
-        for (let i = 0; i < dropdowns.length; i++) {
-            dropdowns[i].style.display = "none";
-        }
+function toggleDropdown(userId) {
+    const menu = document.getElementById(`dropdownMenu${userId}`);
+    menu.style.display = (menu.style.display === "block") ? "none" : "block";
+}
+
+function openEditModal(id, firstName, lastName, email, username, role) {
+    document.getElementById('editUserId').value = id;
+    document.getElementById('editFirstName').value = firstName;
+    document.getElementById('editLastName').value = lastName;
+    document.getElementById('editEmail').value = email;
+    document.getElementById('editUsername').value = username;
+    document.getElementById('editRole').value = role;
+    document.getElementById('editModal').style.display = 'block';
+}
+
+function closeModal() {
+    document.getElementById('editModal').style.display = 'none';
+}
+
+// Save Changes
+document.getElementById('editUserForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    const id = document.getElementById('editUserId').value;
+    const firstName = document.getElementById('editFirstName').value;
+    const lastName = document.getElementById('editLastName').value;
+    const email = document.getElementById('editEmail').value;
+    const username = document.getElementById('editUsername').value;
+    const role = document.getElementById('editRole').value;
+
+    // Update the row directly
+    const row = document.getElementById('userRow' + id);
+    row.innerHTML = `
+        <td>${firstName} ${lastName}</td>
+        <td>${email}</td>
+        <td>${username}</td>
+        <td>${role}</td>
+        <td>
+            <div class="action-dropdown">
+                <i class='bx bx-cog action-icon' onclick="toggleDropdown(${id})"></i>
+                <div class="dropdown-menu" id="dropdownMenu${id}">
+                    <button class="dropdown-item" onclick="openEditModal(${id}, '${firstName}', '${lastName}', '${email}', '${username}', '${role}')"><i class='bx bx-edit'></i> Edit</button>
+                    <button class="dropdown-item" onclick="deleteUser(${id})"><i class='bx bx-trash'></i> Delete</button>
+                    <button class="dropdown-item" onclick="archiveUser(${id})"><i class='bx bx-archive-in'></i> Archive</button>
+                </div>
+            </div>
+        </td>
+    `;
+
+    closeModal();
+    alert('Changes saved!');
+});
+
+function deleteUser(id) {
+    const row = document.getElementById('userRow' + id);
+    if (confirm('Are you sure you want to delete this user?')) {
+        row.remove();
     }
 }
 
-new Chart(document.getElementById('visitorsChart').getContext('2d'), {
-    type: 'bar',
-    data: {
-        labels: ['Jan', 'Feb', 'Mar', 'Apr'],
-        datasets: [{
-            label: 'Visitors',
-            data: [120, 150, 180, 200],
-            backgroundColor: '#1f9335'
-        }]
-    },
-    options: {
-        responsive: true,
-        plugins: {
-            title: { display: true, text: 'Monthly Visitors' }
-        }
-    }
-});
+function archiveUser(id) {
+    const row = document.getElementById('userRow' + id);
+    const name = row.children[0].innerText;
+    const email = row.children[1].innerText;
+    const archiveTableBody = document.querySelector('#archiveTable tbody');
 
+    const newRow = document.createElement('tr');
+    newRow.innerHTML = `
+        <td>${id}</td>
+        <td>${name}</td>
+        <td>${email}</td>
+        <td>${new Date().toLocaleString()}</td>
+        <td><button class="btn btn-success" onclick="restoreUser(${id}, '${name}', '${email}')">Restore</button></td>
+    `;
+    archiveTableBody.appendChild(newRow);
 
-new Chart(document.getElementById('trafficChart').getContext('2d'), {
-    type: 'pie',
-    data: {
-        labels: ['Direct', 'Referral', 'Social Media'],
-        datasets: [{
-            label: 'Traffic',
-            data: [55, 25, 20],
-            backgroundColor: ['#1f9335', '#66bb6a', '#a5d6a7']
-        }]
-    },
-    options: {
-        responsive: true,
-        plugins: {
-            title: { display: true, text: 'Violation' }
-        }
-    }
-});
+    row.remove();
+}
 
-new Chart(document.getElementById('approvalChart').getContext('2d'), {
-    type: 'doughnut',
-    data: {
-        labels: ['Approved', 'Pending'],
-        datasets: [{
-            label: 'Approval Rate',
-            data: [10, 90],
-            backgroundColor: ['#1f9335', '#a5d6a7']
-        }]
-    },
-    options: {
-        responsive: true,
-        plugins: {
-            title: { display: true, text: 'Vehicle Rgistration' }
-        }
-    }
-});
+function restoreUser(id, name, email) {
+    const userTableBody = document.getElementById('userTableBody');
+    const newRow = document.createElement('tr');
+    newRow.setAttribute('id', 'userRow' + id);
+    newRow.innerHTML = `
+        <td>${name}</td>
+        <td>${email}</td>
+        <td>-</td>
+        <td>-</td>
+        <td>
+            <div class="action-dropdown">
+                <i class='bx bx-cog action-icon' onclick="toggleDropdown(${id})"></i>
+                <div class="dropdown-menu" id="dropdownMenu${id}">
+                    <button class="dropdown-item" onclick="openEditModal(${id}, '${name.split(' ')[0]}', '${name.split(' ')[1] || ''}', '${email}', '-', '-')"><i class='bx bx-edit'></i> Edit</button>
+                    <button class="dropdown-item" onclick="deleteUser(${id})"><i class='bx bx-trash'></i> Delete</button>
+                    <button class="dropdown-item" onclick="archiveUser(${id})"><i class='bx bx-archive-in'></i> Archive</button>
+                </div>
+            </div>
+        </td>
+    `;
+    userTableBody.appendChild(newRow);
+    updateArchiveTable();
+}
 
-new Chart(document.getElementById('engagementChart').getContext('2d'), {
-    type: 'bar',
-    data: {
-        labels: ['Twitter', 'Facebook', 'Instagram'],
-        datasets: [
-            {
-                label: 'Jan',
-                data: [20, 15, 25],
-                backgroundColor: '#1f9335'
-            },
-            {
-                label: 'Feb',
-                data: [25, 35, 15],
-                backgroundColor: '#66bb6a'
-            },
-            {
-                label: 'Mar',
-                data: [50, 40, 35],
-                backgroundColor: '#a5d6a7'
-            }
-        ]
-    },
-    options: {
-        responsive: true,
-        plugins: {
-            title: { display: true, text: 'Engagement by Platform' }
-        }
-    }
-});
+function updateArchiveTable() {
+    const archiveTableBody = document.querySelector('#archiveTable tbody');
+    archiveTableBody.innerHTML = ''; // clear archive after restoring
+}
+
 
 
 </script>
