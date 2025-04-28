@@ -373,173 +373,140 @@ canvas {
 }
 
 
-.user-info-table {
-  margin: 20px 30px;
-  overflow-x: auto;
-}
-
-.user-info-table table {
+#userTable, #archiveTable {
   width: 100%;
   border-collapse: collapse;
-  background: #ffffff;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-  border-radius: 8px;
-  overflow: hidden;
+  margin-top: 20px;
 }
 
-.user-info-table th, .user-info-table td {
-  padding: 12px 15px;
+#userTable th, #userTable td, 
+#archiveTable th, #archiveTable td {
+  padding: 10px;
   text-align: left;
-  font-size: 14px;
   border-bottom: 1px solid #ddd;
 }
 
-.user-info-table th {
-  background-color: #1f9335;
-  color: #ffffff;
+#userTable th, #archiveTable th {
+  background-color: #f4f4f4;
 }
 
-.user-info-table tr:hover {
+#userTable tr:hover, #archiveTable tr:hover {
   background-color: #f1f1f1;
 }
 
-.action-buttons {
-  margin-top: 5px;
-  display: flex;
-  gap: 5px;
-}
-
-.action-dropdown {
-  position: relative;
-  display: inline-block;
-}
-
-.action-icon {
-  font-size: 24px;
+button {
+  padding: 5px 10px;
   cursor: pointer;
-  color: #1f9335;
-}
-
-.dropdown-menu {
-  display: none;
-  position: absolute;
-  right: 0;
-  top: 30px;
-  background-color: white;
-  min-width: 120px;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-  border-radius: 6px;
-  z-index: 1000;
-  padding: 8px 0;
-}
-
-.dropdown-item {
-  background: none;
   border: none;
-  width: 100%;
-  text-align: left;
-  padding: 10px 15px;
-  font-size: 14px;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  transition: 0.2s;
+  background-color: #1f9335;
+  color: white;
+  border-radius: 5px;
 }
 
-.dropdown-item:hover {
-  background-color: #f1f1f1;
+button:hover {
+  background-color: #4CAF50;
 }
 
 /* Modal Styles */
-.modal {
-  display: none; 
-  position: fixed; 
-  z-index: 1000; 
-  padding-top: 100px; 
+#editModal {
+  display: none;
+  position: fixed;
+  z-index: 1;
   left: 0;
   top: 0;
   width: 100%;
   height: 100%;
-  overflow: auto; 
-  background-color: rgba(0,0,0,0.5); /* Black background with transparency */
+  background-color: rgba(0, 0, 0, 0.4);
+  padding-top: 50px;
+  overflow: auto;
 }
 
-/* Modal Content */
 .modal-content {
-  background-color: #e9f7ef; /* light green background */
-  margin: auto;
-  padding: 30px;
-  border: 1px solid #2ecc71; /* green border */
-  width: 400px;
-  border-radius: 10px;
+  background-color: #fff;
+  margin: 5% auto;
+  padding: 20px;
+  border-radius: 5px;
+  width: 50%;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
   position: relative;
-  box-shadow: 0 5px 15px rgba(0,0,0,0.3);
-  animation: fadeIn 0.3s ease-in-out;
 }
 
-/* Fade animation */
-@keyframes fadeIn {
-  from {opacity: 0;}
-  to {opacity: 1;}
+.modal-content h2 {
+  margin-bottom: 20px;
 }
 
-/* Close Button */
-.close-button {
-  color: #27ae60; /* darker green */
-  float: right;
-  font-size: 28px;
-  font-weight: bold;
-  cursor: pointer;
+.modal-content label {
+  display: block;
+  margin-bottom: 5px;
 }
 
-.close-button:hover,
-.close-button:focus {
-  color: #1e8449;
-  text-decoration: none;
-}
-
-/* Form styles inside modal */
-#editUserForm {
-  display: flex;
-  flex-direction: column;
-}
-
-#editUserForm label {
-  margin: 10px 0 5px 0;
-  font-weight: bold;
-  color: #145a32; /* dark green text */
-  font-size: 14px;
-}
-
-#editUserForm input {
+.modal-content input, .modal-content select {
+  width: 100%;
   padding: 10px;
   margin-bottom: 15px;
-  border: 1px solid #2ecc71;
+  border: 1px solid #ddd;
   border-radius: 5px;
-  outline: none;
-  font-size: 14px;
 }
 
-#editUserForm input:focus {
-  border-color: #27ae60;
-  background-color: #d4efdf;
-}
-
-/* Save Button */
-.btn-save {
-  background-color: #2ecc71; /* vibrant green */
+.modal-content button {
+  background-color: #1f9335;
   color: white;
+  padding: 10px 20px;
   border: none;
-  padding: 12px;
   border-radius: 5px;
-  font-size: 16px;
   cursor: pointer;
-  transition: background 0.3s ease;
 }
 
-.btn-save:hover {
-  background-color: #27ae60;
+.modal-content button:hover {
+  background-color: #4CAF50;
+}
+
+.close {
+  color: #aaa;
+  font-size: 28px;
+  font-weight: bold;
+  position: absolute;
+  top: 10px;
+  right: 20px;
+  cursor: pointer;
+}
+
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+
+@keyframes slideIn {
+  from {
+      transform: translateY(-30px); 
+      opacity: 0;
+  }
+  to {
+      transform: translateY(0);
+      opacity: 1;
+  }
+}
+
+
+.modal-content input,
+.modal-content textarea {
+  width: 100%;
+  padding: 12px;
+  margin: 10px 0;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-sizing: border-box;
+  font-size: 16px;
+}
+
+
+.modal-content input:focus,
+.modal-content textarea:focus {
+  border-color: #4CAF50;
+  outline: none; 
 }
 
 
@@ -641,13 +608,13 @@ canvas {
 
 .graphs-inline {
     display: flex;
-    gap: 20px; 
+    gap: 20px; /* space between the two graphs */
     justify-content: space-between;
 }
 
 .graph {
-    flex: 1; 
-    min-width: 45%; 
+    flex: 1; /* Ensures both graphs take equal width */
+    min-width: 45%; /* Prevents the graphs from becoming too small */
 }
 
 .view-more-link {
