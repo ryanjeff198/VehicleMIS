@@ -16,15 +16,14 @@ $allUsers = $user->fetchAllUsers();
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
-    <link rel="shortcut icon" href="../favicon/favicon.ico" type="image/x-icon">
-    <link rel="stylesheet" href="../css folder/admin.css">
-    <title>Admin Page</title>
+    <link rel="stylesheet" href="../../css folder/admin.css">
+    <title>Profile</title>
 </head>
 <body>
-<div class="sidebar">
+    <div class="sidebar">
         <div class="logo-content">
             <div class="logo">
-                <img src="../img folder/kldlogo.png" alt="kldlogo" width="50px" height="50px" style="margin: 5px;">
+                <img src="../../img folder/kldlogo.png" alt="kldlogo" width="50px" height="50px" style="margin: 5px;">
                 <div class="logo-name">Kolehiyo ng Lungsod ng Dasmariñas</div>
             </div>
             <i class='bx bx-menu' id="btn"></i>
@@ -98,12 +97,12 @@ $allUsers = $user->fetchAllUsers();
     <div class="home-content">
         <div class="navbar">
             <div class="navbar-left">
-              <img src="../../img folder/kldlogo.png" class="logo" alt="KLD Vehicle Logo"> 
+              <img src="../../img folder/kldlogo.png" class="logo" alt="KLD Vehicle Logo">
               <h3 class="brand-name">KLD</h3>
             </div>
           
             <div class="profile-dropdown">
-              <img src="../../img folder/noprofile.png" alt="gnik" class="profile" id="profileBtn"> <!--THIS IS FOR PROFILE PICTURE-->
+              <img src="../../img folder/noprofile.png" alt="gnik" class="profile" id="profileBtn">
               <div class="dropdown-content" id="profileDropdown">
                 <a href="#">My Profile</a>
                 <a href="#">Settings</a>
@@ -112,101 +111,97 @@ $allUsers = $user->fetchAllUsers();
             </div>
           </div>
 
+          <h3 style="margin-top: 30px; margin-left: 20px;">User Information</h3>
 
-        <h3 style="margin-top: 30px; margin-left: 20px;">User Information</h3>
-<div class="user-info-table">
-    <table>
-        <thead>
-            <tr>
-                <th>Full Name</th>
-                <th>Email Address</th>
-                <th>Username</th>
-                <th>Role</th>
+          <!-- User Table -->
+          <table id="userTable">
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>First name</th>
+                <th>Last name</th>
+                <th>KLD Email</th>
                 <th>Status</th>
-            </tr>
-        </thead>
-        <tbody id="userTableBody">
-            <?php foreach ($allUsers as $usr): ?>
-            <tr id="userRow<?= $usr['ID'] ?>">
-                <td><?= htmlspecialchars($usr["firstName"]) ?> <?= htmlspecialchars($usr["lastName"]) ?></td>
-                <td><?= htmlspecialchars($usr["kldEmail"]) ?></td>
-                <td><?= htmlspecialchars($usr["username"]) ?></td>
-                <td><?= htmlspecialchars($usr["role"]) ?></td>
-                <td>
-                    <div class="action-dropdown">
-                        <i class='bx bx-cog action-icon' onclick="toggleDropdown(<?= $usr['ID'] ?>)"></i>
-                        <div class="dropdown-menu" id="dropdownMenu<?= $usr['ID'] ?>">
-                            <button class="dropdown-item" onclick="openEditModal(<?= $usr['ID'] ?>, '<?= htmlspecialchars($usr["firstName"]) ?>', '<?= htmlspecialchars($usr["lastName"]) ?>', '<?= htmlspecialchars($usr["kldEmail"]) ?>', '<?= htmlspecialchars($usr["username"]) ?>', '<?= htmlspecialchars($usr["role"]) ?>')">
-                                <i class='bx bx-edit'></i> Edit
-                            </button>
-                            <button class="dropdown-item" onclick="deleteUser(<?= $usr['ID'] ?>)">
-                                <i class='bx bx-trash'></i> Delete
-                            </button>
-                            <button class="dropdown-item" onclick="archiveUser(<?= $usr['ID'] ?>)">
-                                <i class='bx bx-archive-in'></i> Archive
-                            </button>
-                        </div>
-                    </div>
-                </td>
-            </tr>
-            <?php endforeach; ?>
-        </tbody>
-    </table>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody>
+                <?php foreach ($allUsers as $usr): ?>
+                <tr id="userRow<?= $usr['ID'] ?>">
+                    <td><?= htmlspecialchars($usr["ID"]) ?></td>
+                    <td><?= htmlspecialchars($usr["firstName"]) ?></td>
+                    <td><?= htmlspecialchars($usr["lastName"]) ?></td>
+                    <td><?= htmlspecialchars($usr["kldEmail"]) ?></td>
+                    <td><?= htmlspecialchars($usr["status"]) ?></td>
+                    <td>
+                        <button class="editBtn">Edit</button>
+                        <button class="archiveBtn">Archive</button>
+                    </td>
+                </tr>
+                <?php endforeach; ?>
+            </tbody>
+          </table>
+          
+          <!-- Edit Modal -->
+          <div id="editModal" class="modal">
+            <div class="modal-content">
+              <span class="close">&times;</span>
+              <h2>Edit User</h2>
+              <form id="editUserForm">
+                <label for="editFName">First name:</label>
+                <input type="text" id="editFName" name="editFName" required>
 
-    <h3 style="margin-top: 50px; margin-left: 20px;">Archived Users</h3>
-    <table class="table" id="archiveTable">
-        <thead>
-            <tr>
-                <th>User ID</th>
-                <th>Name</th>
-                <th>Email</th>
-                <th>Date Archived</th>
-                <th>Restore</th>
-            </tr>
-        </thead>
-        <tbody>
-            <!-- Archived Users will be added dynamically -->
-        </tbody>
-    </table>
-</div>
+                <label for="editLName">Last name:</label>
+                <input type="text" id="editLName" name="editLName" required>
 
-<!-- Edit User Modal -->
-<div id="editModal" class="modal">
-    <div class="modal-content">
-      <span class="close-button" onclick="closeModal()">&times;</span>
-      <h2>Edit User</h2>
-      <form id="editUserForm">
-        <input type="hidden" id="editUserId">
-        <label>First Name:</label>
-        <input type="text" id="editFirstName" required>
-        <label>Last Name:</label>
-        <input type="text" id="editLastName" required>
-        <label>Email:</label>
-        <input type="email" id="editEmail" required>
-        <label>Username:</label>
-        <input type="text" id="editUsername" required>
-        <label>Role:</label>
-        <input type="text" id="editRole" required>
-        <button type="submit" class="btn-save">Save Changes</button>
-      </form>
-    </div>
-  </div>
-  
+                <label for="editEmail">KLD Email:</label>
+                <input type="email" id="editEmail" name="editEmail" required>
 
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+                <label for="editStatus">Status:</label>
+                <select id="editStatus" name="editStatus" required>
+                  <option value="Active">Active</option>
+                  <option value="Pending">Pending</option>
+                  <option value="Suspended">Suspended</option>
+                </select>
+          
+                <button type="submit">Save Changes</button>
+              </form>
+            </div>
+          </div>
+
+          <br>
+          <br>
+          
+          <!-- Archived Users Table -->
+          <div class="archived-users box">
+            <h3 style="margin-top: 30px; margin-left: 20px;">Archived Information</h3>
+            <div class="sales-details">
+              <table id="archiveTable">
+                <thead>
+                  <tr>
+                    <th>ID</th>
+                    <th>First name</th>
+                    <th>Last name</th>
+                    <th>KLD Email</th>
+                    <th>Status</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <!-- Archived users will appear here -->
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script>
-
+// Sidebar Toggle
 let btn = document.querySelector("#btn");
 let sidebar = document.querySelector(".sidebar");
-let searchBtn = document.querySelector(".bx-search-alt");
-
-btn.onclick = function(){
+btn.onclick = function() {
     sidebar.classList.toggle("active");
-}
-
-searchBtn.onclick = function(){
-    sidebar.classList.toggle("active");
-}
+};
 
 // Profile Dropdown
 const profileBtn = document.getElementById('profileBtn');
@@ -223,121 +218,151 @@ window.addEventListener('click', function(e) {
   }
 });
 
-function toggleDropdown() {
-    const menu = document.getElementById("dropdownMenu");
-    menu.style.display = (menu.style.display === "block") ? "none" : "block";
+// Table and Modal functionality
+const userTableBody = document.querySelector("#userTable tbody");
+const archiveTableBody = document.querySelector("#archiveTable tbody");
+
+const modal = document.getElementById("editModal");
+const closeModal = document.querySelector(".close");
+const editForm = document.getElementById("editUserForm");
+
+let currentRow = null;
+
+// Load data from localStorage
+function loadData() {
+    const users = JSON.parse(localStorage.getItem("users")) || [];
+    const archives = JSON.parse(localStorage.getItem("archives")) || [];
+
+    userTableBody.innerHTML = "";
+    archiveTableBody.innerHTML = "";
+
+    users.forEach(user => {
+        const row = createUserRow(user.id, user.Fname, user.Lname, user.email, user.status);
+        userTableBody.appendChild(row);
+    });
+
+    archives.forEach(user => {
+        const row = createArchiveRow(user.id, user.Fname, user.Lname, user.email, user.status);
+        archiveTableBody.appendChild(row);
+    });
 }
 
-function toggleDropdown(userId) {
-    const menu = document.getElementById(`dropdownMenu${userId}`);
-    menu.style.display = (menu.style.display === "block") ? "none" : "block";
-}
-
-function openEditModal(id, firstName, lastName, email, username, role) {
-    document.getElementById('editUserId').value = id;
-    document.getElementById('editFirstName').value = firstName;
-    document.getElementById('editLastName').value = lastName;
-    document.getElementById('editEmail').value = email;
-    document.getElementById('editUsername').value = username;
-    document.getElementById('editRole').value = role;
-    document.getElementById('editModal').style.display = 'block';
-}
-
-function closeModal() {
-    document.getElementById('editModal').style.display = 'none';
-}
-
-// Save Changes
-document.getElementById('editUserForm').addEventListener('submit', function(e) {
-    e.preventDefault();
-    const id = document.getElementById('editUserId').value;
-    const firstName = document.getElementById('editFirstName').value;
-    const lastName = document.getElementById('editLastName').value;
-    const email = document.getElementById('editEmail').value;
-    const username = document.getElementById('editUsername').value;
-    const role = document.getElementById('editRole').value;
-
-    // Update the row directly
-    const row = document.getElementById('userRow' + id);
+// Create a row for active users
+function createUserRow(id, firstName, lastName, email, status) {
+    const row = document.createElement("tr");
     row.innerHTML = `
+        <td>${id}</td>
+        <td>${firstName}</td>
+        <td>${lastName}</td>
+        <td>${email}</td>
+        <td>${status}</td>
+        <td>
+            <button class="editBtn">Edit</button>
+            <button class="archiveBtn">Archive</button>
+        </td>
+    `;
+    return row;
+}
+
+// Create a row for archived users
+function createArchiveRow(id, firstName, lastName, email, status) {
+    const row = document.createElement("tr");
+    row.innerHTML = `
+        <td>${id}</td>
         <td>${firstName} ${lastName}</td>
         <td>${email}</td>
-        <td>${username}</td>
-        <td>${role}</td>
+        <td>${status}</td>
+        <td>Archived</td>
         <td>
-            <div class="action-dropdown">
-                <i class='bx bx-cog action-icon' onclick="toggleDropdown(${id})"></i>
-                <div class="dropdown-menu" id="dropdownMenu${id}">
-                    <button class="dropdown-item" onclick="openEditModal(${id}, '${firstName}', '${lastName}', '${email}', '${username}', '${role}')"><i class='bx bx-edit'></i> Edit</button>
-                    <button class="dropdown-item" onclick="deleteUser(${id})"><i class='bx bx-trash'></i> Delete</button>
-                    <button class="dropdown-item" onclick="archiveUser(${id})"><i class='bx bx-archive-in'></i> Archive</button>
-                </div>
-            </div>
+            <button class="restoreBtn">Restore</button>
         </td>
     `;
+    return row;
+}
 
-    closeModal();
-    alert('Changes saved!');
+// Save data to localStorage
+function saveData() {
+    const users = Array.from(userTableBody.rows).map(row => ({
+        id: row.cells[0].innerText,
+        Fname: row.cells[1].innerText,
+        Lname: row.cells[2].innerText,
+        email: row.cells[3].innerText,
+        status: row.cells[4].innerText
+    }));
+
+    const archives = Array.from(archiveTableBody.rows).map(row => ({
+        id: row.cells[0].innerText,
+        Fname: row.cells[1].innerText.split(" ")[0],
+        Lname: row.cells[1].innerText.split(" ")[1],
+        email: row.cells[2].innerText
+    }));
+
+    localStorage.setItem("users", JSON.stringify(users));
+    localStorage.setItem("archives", JSON.stringify(archives));
+}
+
+// Table actions
+document.addEventListener("click", function (e) {
+    const target = e.target;
+
+    // Edit functionality
+    if (target.classList.contains("editBtn")) {
+        currentRow = target.closest("tr");
+        document.getElementById("editFName").value = currentRow.cells[1].innerText;
+        document.getElementById("editLName").value = currentRow.cells[2].innerText;
+        document.getElementById("editEmail").value = currentRow.cells[3].innerText;
+        document.getElementById("editStatus").value = currentRow.cells[4].innerText;
+        modal.style.display = "block";
+    }
+
+    // Archive functionality
+    if (target.classList.contains("archiveBtn")) {
+        const row = target.closest("tr");
+        const id = row.cells[0].innerText;
+        const firstName = row.cells[1].innerText;
+        const lastName = row.cells[2].innerText;
+        const email = row.cells[3].innerText;
+
+        // Move to archive
+        archiveTableBody.appendChild(createArchiveRow(id, firstName, lastName, email, "Archived"));
+        row.remove();
+        saveData();
+    }
+
+    // Restore functionality
+    if (target.classList.contains("restoreBtn")) {
+        const row = target.closest("tr");
+        const id = row.cells[0].innerText;
+        const firstName = row.cells[1].innerText.split(" ")[0];
+        const lastName = row.cells[1].innerText.split(" ")[1];
+        const email = row.cells[2].innerText;
+
+        // Restore to user table
+        userTableBody.appendChild(createUserRow(id, firstName, lastName, email, "Active"));
+        row.remove();
+        saveData();
+    }
 });
 
-function deleteUser(id) {
-    const row = document.getElementById('userRow' + id);
-    if (confirm('Are you sure you want to delete this user?')) {
-        row.remove();
-    }
-}
+// Close modal
+closeModal.onclick = () => modal.style.display = "none";
+window.onclick = (e) => {
+    if (e.target === modal) modal.style.display = "none";
+};
 
-function archiveUser(id) {
-    const row = document.getElementById('userRow' + id);
-    const name = row.children[0].innerText;
-    const email = row.children[1].innerText;
-    const archiveTableBody = document.querySelector('#archiveTable tbody');
+// Handle form submission
+editForm.onsubmit = function (e) {
+    e.preventDefault();
+    currentRow.cells[1].innerText = document.getElementById("editFName").value;
+    currentRow.cells[2].innerText = document.getElementById("editLName").value;
+    currentRow.cells[3].innerText = document.getElementById("editEmail").value;
+    currentRow.cells[4].innerText = document.getElementById("editStatus").value;
+    modal.style.display = "none";
+    saveData();
+};
 
-    const newRow = document.createElement('tr');
-    newRow.innerHTML = `
-        <td>${id}</td>
-        <td>${name}</td>
-        <td>${email}</td>
-        <td>${new Date().toLocaleString()}</td>
-        <td><button class="btn btn-success" onclick="restoreUser(${id}, '${name}', '${email}')">Restore</button></td>
-    `;
-    archiveTableBody.appendChild(newRow);
-
-    row.remove();
-}
-
-function restoreUser(id, name, email) {
-    const userTableBody = document.getElementById('userTableBody');
-    const newRow = document.createElement('tr');
-    newRow.setAttribute('id', 'userRow' + id);
-    newRow.innerHTML = `
-        <td>${name}</td>
-        <td>${email}</td>
-        <td>-</td>
-        <td>-</td>
-        <td>
-            <div class="action-dropdown">
-                <i class='bx bx-cog action-icon' onclick="toggleDropdown(${id})"></i>
-                <div class="dropdown-menu" id="dropdownMenu${id}">
-                    <button class="dropdown-item" onclick="openEditModal(${id}, '${name.split(' ')[0]}', '${name.split(' ')[1] || ''}', '${email}', '-', '-')"><i class='bx bx-edit'></i> Edit</button>
-                    <button class="dropdown-item" onclick="deleteUser(${id})"><i class='bx bx-trash'></i> Delete</button>
-                    <button class="dropdown-item" onclick="archiveUser(${id})"><i class='bx bx-archive-in'></i> Archive</button>
-                </div>
-            </div>
-        </td>
-    `;
-    userTableBody.appendChild(newRow);
-    updateArchiveTable();
-}
-
-function updateArchiveTable() {
-    const archiveTableBody = document.querySelector('#archiveTable tbody');
-    archiveTableBody.innerHTML = ''; // clear archive after restoring
-}
-
-
-
+// Load data when page loads
+window.onload = loadData;
 </script>
-
 </body>
 </html>
