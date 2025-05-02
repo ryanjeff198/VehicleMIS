@@ -9,10 +9,10 @@
     <title>Admin Page</title>
 </head>
 <body>
-    <div class="sidebar">
+<div class="sidebar">
         <div class="logo-content">
             <div class="logo">
-                <img src="../img folder/kldlogo.png" alt="kldlogo" width="50px" height="50px" style="margin: 5px;">
+                <img src="../../img folder/kldlogo.png" alt="kldlogo" width="50px" height="50px" style="margin: 5px;">
                 <div class="logo-name">Kolehiyo ng Lungsod ng Dasmariñas</div>
             </div>
             <i class='bx bx-menu' id="btn"></i>
@@ -34,7 +34,7 @@
             <li>
                 <a href="#">
                     <i class='bx bx-user' ></i>
-                    <span class="links-name">User</span>
+                    <span class="links-name">Profile</span>
                 </a>
                 <span class="tooltip">User</span>
             </li>
@@ -47,15 +47,15 @@
             </li>
             <li>
                 <a href="#">
-                    <i class='bx bx-line-chart' ></i>
-                    <span class="links-name">Analytics</span>
+                    <i class='bx bxs-megaphone'></i>
+                    <span class="links-name">Announcements</span>
                 </a>
                 <span class="tooltip">Analytics</span>
             </li>
             <li>
                 <a href="#">
                     <i class='bx bx-folder-open' ></i>
-                    <span class="links-name">File Manager</span>
+                    <span class="links-name">Files</span>
                 </a>
                 <span class="tooltip">Files</span>
             </li>
@@ -81,68 +81,297 @@
                 <span class="tooltip">Settings</span>
             </li>
         </ul>
-        <div class="profile-content">
-            <div class="profile">
-                <div class="profile-details">
-                    <img src="jeff.jpg" alt="">
-                    <div class="name-job">
-                        <div class="name">Ryan Jeff L. Felizardo </div>
-                            <div class="job">IS Manager</div>
-                    </div>
-                </div>
-                <i class='bx bx-log-out' id="log-out" ></i>
-            </div>
-        </div>
     </div>
+    <div class="home-content">
+        <div class="navbar">
+            <div class="navbar-left">
+              <img src="../../img folder/kldlogo.png" class="logo" alt="KLD Vehicle Logo">
+              <h3 class="brand-name">KLD</h3>
+            </div>
+          
+            <div class="profile-dropdown">
+              <img src="../../img folder/noprofile.png" alt="gnik" class="profile" id="profileBtn">
+              <div class="dropdown-content" id="profileDropdown">
+                <a href="#">My Profile</a>
+                <a href="#">Settings</a>
+                <a href="#">Logout</a>
+              </div>
+            </div>
+          </div>
 
-<div class="home-content">
-    <div class="text">Home</div>
-    <div class="insights-container">
-        <h2>👋 Welcome back, Ryan!</h2>
-        <h3>Insights</h3>
-    
-        <div class="insights-grid">
-            <div class="insight-box">
-                <p class="insight-number">100 <span class="info-icon">ℹ️</span></p>
-                <p class="insight-label">Active User</p>
-            </div>
-            <div class="insight-box">
-                <p class="insight-number">6 <span class="info-icon">ℹ️</span></p>
-                <p class="insight-label">Inactive User</p>
-            </div>
-            <div class="insight-box">
-                <p class="insight-number">9 <span class="info-icon">ℹ️</span></p>
-                <p class="insight-label">Managers</p>
-            </div>
-            <div class="insight-box">
-                <p class="insight-number">0 <span class="info-icon">ℹ️</span></p>
-                <p class="insight-label">Pending Activation</p>
-            </div>
-            <div class="insight-box">
-                <p class="insight-number">6,807 <span class="info-icon">ℹ️</span></p>
-                <p class="insight-label">Time Spent</p>
-            </div>
-            <div class="insight-box">
-                <p class="insight-number">58 <span class="info-icon">ℹ️</span></p>
-                <p class="insight-label">User Violation</p>
-            </div>
-        </div>
-    </div>
-</div>
+          <h3 style="margin-top: 30px; margin-left: 20px;">User Information</h3>
 
+          <!-- User Table -->
+          <table id="userTable">
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>First name</th>
+                <th>Last name</th>
+                <th>KLD Email</th>
+                <th>Status</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>1</td>
+                <td>Lucky</td>
+                <td>Ortega</td>
+                <td>lucky@example.com</td>
+                <td>Active</td>
+                <td>
+                  <button class="editBtn">Edit</button>
+                  <button class="archiveBtn">Archive</button>
+                </td>
+              </tr>
+              <tr>
+                <td>2</td>
+                <td>Jane</td>
+                <td>Smith</td>
+                <td>jane@example.com</td>
+                <td>Pending</td>
+                <td>
+                  <button class="editBtn">Edit</button>
+                  <button class="archiveBtn">Archive</button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+          
+          <!-- Edit Modal -->
+          <div id="editModal" class="modal">
+            <div class="modal-content">
+              <span class="close">&times;</span>
+              <h2>Edit User</h2>
+              <form id="editUserForm">
+                <label for="editFName">First name:</label>
+                <input type="text" id="editFName" name="editName" required>
+
+                <label for="editLName">Last name:</label>
+                <input type="text" id="editLName" name="editName" required>
+
+                <label for="editEmail">Kld Email:</label>
+                <input type="email" id="editEmail" name="editEmail" required>
+
+                <label for="editStatus">Status:</label>
+                <select id="editStatus" name="editStatus" required>
+                  <option value="Active">Active</option>
+                  <option value="Pending">Pending</option>
+                  <option value="Suspended">Suspended</option>
+                </select>
+          
+                <button type="submit">Save Changes</button>
+              </form>
+            </div>
+          </div>
+
+          <br>
+          <br>
+          
+          <!-- Archived Users Table -->
+          <div class="archived-users box">
+            <h3 style="margin-top: 30px; margin-left: 20px;">Archived Information</h3>
+            <div class="sales-details">
+              <table id="archiveTable">
+                <thead>
+                  <tr>
+                    <th>ID</th>
+                    <th>First name</th>
+                    <th>Last name</th>
+                    <th>Kld Email</th>
+                    <th>Status</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <!-- Archived users will appear here -->
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script>
 
+// Sidebar Toggle
 let btn = document.querySelector("#btn");
 let sidebar = document.querySelector(".sidebar");
-let searchBtn = document.querySelector(".bx-search-alt");
-
-btn.onclick = function(){
+btn.onclick = function() {
     sidebar.classList.toggle("active");
+};
+
+// Profile Dropdown
+const profileBtn = document.getElementById('profileBtn');
+const profileDropdown = document.getElementById('profileDropdown');
+
+profileBtn.addEventListener('click', () => {
+  profileDropdown.style.display = profileDropdown.style.display === 'block' ? 'none' : 'block';
+});
+
+// Close dropdown when clicking outside
+window.addEventListener('click', function(e) {
+  if (!profileBtn.contains(e.target) && !profileDropdown.contains(e.target)) {
+    profileDropdown.style.display = 'none';
+  }
+});
+
+// Table and Modal functionality
+// Get the reference for the user table body
+// Table references
+const userTableBody = document.querySelector("#userTable tbody");
+const archiveTableBody = document.querySelector("#archiveTable tbody");
+
+// Modal references
+const modal = document.getElementById("editModal");
+const closeModal = document.querySelector(".close");
+const editForm = document.getElementById("editUserForm");
+
+// Global variable for currently editing row
+let currentRow = null;
+
+// Load data from localStorage
+function loadData() {
+    const users = JSON.parse(localStorage.getItem("users")) || [
+        { id: 1, Fname: "John", Lname: "Doe", email: "john@example.com", status: "Active" },
+        { id: 2, Fname: "Jane", Lname: "Smith", email: "jane@example.com", status: "Pending" },
+    ];
+    const archives = JSON.parse(localStorage.getItem("archives")) || [];
+
+    // Clear existing rows
+    userTableBody.innerHTML = "";
+    archiveTableBody.innerHTML = "";
+
+    // Populate user table
+    users.forEach(user => {
+        const row = createUserRow(user.id, user.Fname, user.Lname, user.email, user.status);
+        userTableBody.appendChild(row);
+    });
+
+    // Populate archive table
+    archives.forEach(user => {
+        const row = createArchiveRow(user.id, user.Fname, user.Lname, user.email);
+        archiveTableBody.appendChild(row);
+    });
 }
 
-searchBtn.onclick = function(){
-    sidebar.classList.toggle("active");
+// Create a row for active users with ID
+function createUserRow(id, firstName, lastName, email, status) {
+    const row = document.createElement("tr");
+    row.innerHTML = `
+        <td>${id}</td>
+        <td>${firstName}</td>
+        <td>${lastName}</td>
+        <td>${email}</td>
+        <td>${status}</td>
+        <td>
+            <button class="editBtn">Edit</button>
+            <button class="archiveBtn">Archive</button>
+        </td>
+    `;
+    return row;
 }
+
+// Create a row for archived users with ID
+function createArchiveRow(id, firstName, lastName, email, status) {
+    const row = document.createElement("tr");
+    row.innerHTML = `
+        <td>${id}</td>
+        <td>${firstName} ${lastName}</td>
+        <td>${email}</td>
+        <td>${status}</td>
+        <td>Archived</td>
+        <td>
+            <button class="restoreBtn">Restore</button>
+        </td>
+    `;
+    return row;
+}
+
+// Save data to localStorage
+function saveData() {
+    const users = Array.from(userTableBody.rows).map(row => ({
+        id: row.cells[0].innerText, // Capture the ID as well
+        Fname: row.cells[1].innerText,
+        Lname: row.cells[2].innerText,
+        email: row.cells[3].innerText,
+        status: row.cells[4].innerText
+    }));
+
+    const archives = Array.from(archiveTableBody.rows).map(row => ({
+        id: row.cells[0].innerText, // Capture the ID from the archived table as well
+        Fname: row.cells[1].innerText.split(" ")[0], // Get first name
+        Lname: row.cells[1].innerText.split(" ")[1], // Get last name
+        email: row.cells[2].innerText
+    }));
+
+    localStorage.setItem("users", JSON.stringify(users));
+    localStorage.setItem("archives", JSON.stringify(archives));
+}
+
+// Handle table actions using event delegation
+document.addEventListener("click", function (e) {
+    const target = e.target;
+
+    // Edit button functionality
+    if (target.classList.contains("editBtn")) {
+        currentRow = target.closest("tr");
+        document.getElementById("editFName").value = currentRow.cells[1].innerText;
+        document.getElementById("editLName").value = currentRow.cells[2].innerText;
+        document.getElementById("editEmail").value = currentRow.cells[3].innerText;
+        document.getElementById("editStatus").value = currentRow.cells[4].innerText;
+        modal.style.display = "block";
+    }
+
+    // Archive button functionality
+    if (target.classList.contains("archiveBtn")) {
+        const row = target.closest("tr");
+        const id = row.cells[0].innerText;
+        const firstName = row.cells[1].innerText;
+        const lastName = row.cells[2].innerText;
+        const email = row.cells[3].innerText;
+
+        // Move to archive
+        archiveTableBody.appendChild(createArchiveRow(id, firstName, lastName, email));
+        row.remove();
+        saveData();
+    }
+
+    // Restore button functionality
+    if (target.classList.contains("restoreBtn")) {
+        const row = target.closest("tr");
+        const id = row.cells[0].innerText;
+        const firstName = row.cells[1].innerText.split(" ")[0]; // Get first name
+        const lastName = row.cells[1].innerText.split(" ")[1]; // Get last name
+        const email = row.cells[2].innerText;
+
+        // Restore to user table with "Active" status by default
+        userTableBody.appendChild(createUserRow(id, firstName, lastName, email, "Active"));
+        row.remove();
+        saveData();
+    }
+});
+
+// Close modal
+closeModal.onclick = () => modal.style.display = "none";
+window.onclick = (e) => {
+    if (e.target === modal) modal.style.display = "none";
+};
+
+// Handle form submission (Save changes)
+editForm.onsubmit = function (e) {
+    e.preventDefault();
+    currentRow.cells[1].innerText = document.getElementById("editFName").value;
+    currentRow.cells[2].innerText = document.getElementById("editLName").value;
+    currentRow.cells[3].innerText = document.getElementById("editEmail").value;
+    currentRow.cells[4].innerText = document.getElementById("editStatus").value;
+    modal.style.display = "none";
+    saveData();
+};
+
+// Load data when the page loads
+window.onload = loadData;
 
 </script>
 
